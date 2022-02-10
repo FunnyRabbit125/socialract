@@ -63,6 +63,12 @@ const EVENTS_FOLLOWED = [
     image: 'xcfv',
     key: '4',
   },
+  {
+    name: 'Yoga',
+    dateTime: new Date().toJSON(),
+    image: 'xcfv',
+    key: '4',
+  },
 ];
 
 export default function Notification() {

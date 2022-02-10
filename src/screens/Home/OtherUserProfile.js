@@ -9,41 +9,15 @@ import {
   ImageBackground,
 } from 'react-native';
 import React, {useState} from 'react';
-import {theme} from '../../../Utils/theme';
-import Statusbar from '../../../Components/Statusbar';
-import TextFormatted from '../../../Components/TextFormated';
+import {theme} from '../../Utils/theme';
+import Statusbar from '../../Components/Statusbar';
+import TextFormatted from '../../Components/TextFormated';
+import OutlineButton from '../../Components/Outline_Button';
 
-import Photos from './ProfileTab/Photos';
-import Videos from './ProfileTab/Videos';
-import Text_ from './ProfileTab/Text';
+import Photos from './tabScreen/ProfileTab/Photos';
+import Videos from './tabScreen/ProfileTab/Videos';
+import Text_ from './tabScreen/ProfileTab/Text';
 import {useNavigation, useRoute} from '@react-navigation/native';
-
-const EVENTS_FOLLOWED = [
-  {
-    name: 'Online Courses',
-    dateTime: new Date().toJSON(),
-    image: 'https://picsum.photos/500',
-    key: '1',
-  },
-  {
-    name: 'Workshops',
-    dateTime: new Date().toJSON(),
-    image: 'https://picsum.photos/500',
-    key: '2',
-  },
-  {
-    name: 'Music Concert',
-    dateTime: new Date().toJSON(),
-    image: 'https://picsum.photos/500',
-    key: '3',
-  },
-  {
-    name: 'Yoga',
-    dateTime: new Date().toJSON(),
-    image: 'https://picsum.photos/500',
-    key: '4',
-  },
-];
 
 export default function Profile() {
   const [currentPage, setCurrentPage] = useState('');
@@ -68,6 +42,17 @@ export default function Profile() {
             alignItems: 'center',
             width: 160,
           }}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              style={{
+                height: 20,
+                width: 20,
+                resizeMode: 'contain',
+                marginRight: 10,
+              }}
+              source={require('../../assets/Back.png')}
+            />
+          </TouchableOpacity>
           <Image
             style={{
               height: 50,
@@ -93,37 +78,15 @@ export default function Profile() {
               width: 15,
               resizeMode: 'contain',
             }}
-            source={require('../../../assets/tick.png')}
+            source={require('../../assets/tick.png')}
           />
         </View>
 
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            // borderWidth: 1,
-            justifyContent: 'space-between',
-            width: Dimensions.get('window').width / 3.5,
-            flexShrink: 1,
-          }}>
-          <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
-            <Image
-              style={{height: 22, width: 22, resizeMode: 'contain'}}
-              source={require('../../../assets/Edit.png')}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Analytics')}>
-            <Image
-              style={{height: 22, width: 22, resizeMode: 'contain'}}
-              source={require('../../../assets/Analytics.png')}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-            <Image
-              style={{height: 22, width: 22, resizeMode: 'contain'}}
-              source={require('../../../assets/Settings.png')}
-            />
-          </TouchableOpacity>
+        <View style={{flexShrink: 1}}>
+          <Image
+            style={{height: 22, width: 24, resizeMode: 'contain'}}
+            source={require('../../assets/menu_3.png')}
+          />
         </View>
       </View>
 
@@ -153,16 +116,7 @@ export default function Profile() {
               height: Dimensions.get('window').height / 4,
               borderRadius: 20,
             }}
-            source={{uri: 'https://picsum.photos/500'}}>
-            <View style={{position: 'absolute', top: -15, right: -15}}>
-              <TouchableOpacity>
-                <Image
-                  source={require('../../../assets/plus.png')}
-                  style={{width: 50, resizeMode: 'contain', height: 50}}
-                />
-              </TouchableOpacity>
-            </View>
-          </ImageBackground>
+            source={{uri: 'https://picsum.photos/500'}}></ImageBackground>
         </View>
         <View
           style={{
@@ -213,6 +167,15 @@ export default function Profile() {
           }}>
           Digital goodies designer @pixsellz Everything is designed.
         </TextFormatted>
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          marginBottom: 20,
+        }}>
+        <OutlineButton buttontext={'Follow'} />
+        <OutlineButton buttontext={'Message'} />
       </View>
 
       <View

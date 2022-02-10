@@ -15,11 +15,13 @@ export const theme = {
     Black: '#000000',
     C4C4C4: '#c4c4c4',
     OtherText: '#808080',
+    searchbar: '#7676801F',
+    searchbar_text: '#3C3C4399',
+    online: '#42FFB4',
+    Get_Verified: '#8FB61C',
+    red: '#FA4141',
+    graph_color: '#AE7D00',
 
-    profile_compobent_BG: '#9492928A',
-    paypal: '#223263',
-
-    Button: '#F3E13A',
     heading_Text: '#670000',
     Placeholder: '#B5B5B5',
     Like: '#1deb5c',

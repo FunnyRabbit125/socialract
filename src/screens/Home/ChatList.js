@@ -9,10 +9,13 @@ import {
   ImageBackground,
 } from 'react-native';
 import React from 'react';
-import {theme} from '../../../../Utils/theme';
-import Statusbar from '../../../../Components/Statusbar';
-import TextFormatted from '../../../../Components/TextFormated';
+import {theme} from '../../Utils/theme';
+import Statusbar from '../../Components/Statusbar';
+import TextFormatted from '../../Components/TextFormated';
+import SearchBar from '../../Components/SearchBar';
 import _ from 'lodash';
+import Header from '../../Components/Header';
+import {useNavigation} from '@react-navigation/native';
 
 const EVENTS_FOLLOWED = [
   {
@@ -71,12 +74,21 @@ const EVENTS_FOLLOWED = [
   },
 ];
 
-export default function Donation() {
+export default function ChatList() {
+  const navigation = useNavigation();
   return (
     <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
       <Statusbar
-        backgroundColor={theme.colors.primary}
-        barStyle="dark-content"
+        backgroundColor={theme.colors.secondary}
+        barStyle="light-content"
+      />
+      <Header
+        sourcetwo={require('../../assets/plus_white.png')}
+        source={require('../../assets/back_white.png')}
+        Headertext={'jacob_w'}
+        backgroundColor={theme.colors.secondary}
+        textcolor={theme.colors.primary}
+        onPress={() => navigation.goBack()}
       />
 
       <View style={{flex: 1}}>
@@ -85,12 +97,18 @@ export default function Donation() {
           //   style={{backgroundColor: theme.colors.secondary + '1A'}}
           //   horizontal
           showsVerticalScrollIndicator={false}
+          ListHeaderComponent={
+            <View style={{alignItems: 'center', marginBottom: 10}}>
+              <SearchBar placeholder={'Search'} />
+            </View>
+          }
           contentContainerStyle={{paddingVertical: 10}}
           renderItem={({item, index}) => (
-            <View
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ChatScreen')}
               style={{
                 marginHorizontal: 15,
-                marginVertical: 5,
+                marginVertical: 8,
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -105,8 +123,11 @@ export default function Donation() {
                 }}>
                 <View
                   style={{
-                    borderWidth: 1,
-                    borderColor: theme.colors.C4C4C4,
+                    borderWidth: 1.5,
+                    borderColor:
+                      item.image == ''
+                        ? theme.colors.primary
+                        : theme.colors.secondary,
                     alignItems: 'center',
                     justifyContent: 'center',
                     width: 55,
@@ -119,7 +140,7 @@ export default function Donation() {
                       width: 50,
                       height: 50,
                       borderRadius: 30,
-                      borderWidth: 1,
+                      borderWidth: 2,
                       borderColor: theme.colors.primary,
                     }}
                     source={{uri: 'https://picsum.photos/500'}}
@@ -129,30 +150,49 @@ export default function Donation() {
                   <TextFormatted
                     style={{
                       fontSize: 13,
-                      marginVertical: 10,
-                      lineHeight: 23,
                       fontWeight: '700',
                     }}>
                     Marley Philips
                   </TextFormatted>
+                  <TextFormatted
+                    style={{
+                      fontSize: 13,
+                      fontWeight: '500',
+                      color: theme.colors.OtherText,
+                    }}>
+                    Have a nice day, bro!
+                  </TextFormatted>
                 </View>
               </View>
-              <View style={{alignItems: 'flex-start', flexShrink: 1}}>
-                <TextFormatted
-                  style={{
-                    color: theme.colors.Black,
-                    fontSize: 13,
-                  }}>
-                  $40.00
-                </TextFormatted>
-                <TextFormatted
-                  style={{color: theme.colors.OtherText, fontSize: 13}}>
-                  · now
-                </TextFormatted>
-              </View>
-            </View>
+
+              <TextFormatted
+                style={{
+                  color: theme.colors.Black,
+                  fontSize: 13,
+                  flexShrink: 1,
+                }}>
+                · now
+              </TextFormatted>
+            </TouchableOpacity>
           )}
         />
+      </View>
+      <View style={{alignItems: 'center', paddingBottom: 30, paddingTop: 15}}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Image
+            style={{
+              height: 20,
+              width: 20,
+              resizeMode: 'contain',
+              marginRight: 10,
+            }}
+            source={require('../../assets/camera_green.png')}
+          />
+          <TextFormatted
+            style={{fontWeight: 'bold', color: theme.colors.secondary}}>
+            Camera
+          </TextFormatted>
+        </View>
       </View>
     </View>
   );

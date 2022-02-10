@@ -7,11 +7,13 @@ import {
   FlatList,
   StyleSheet,
   ImageBackground,
+  ScrollView,
 } from 'react-native';
 import React from 'react';
 import {theme} from '../../../Utils/theme';
 import Statusbar from '../../../Components/Statusbar';
 import TextFormatted from '../../../Components/TextFormated';
+import {useNavigation} from '@react-navigation/native';
 
 const EVENTS_FOLLOWED = [
   {
@@ -41,6 +43,7 @@ const EVENTS_FOLLOWED = [
 ];
 
 export default function Home() {
+  const navigation = useNavigation();
   return (
     <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
       <Statusbar
@@ -53,6 +56,7 @@ export default function Home() {
           alignItems: 'center',
           justifyContent: 'space-between',
           marginHorizontal: 20,
+          paddingBottom: 10,
         }}>
         <TextFormatted
           style={{
@@ -89,214 +93,230 @@ export default function Home() {
           />
         </View>
       </View>
-
-      <View style={{marginTop: 20}}>
-        <FlatList
-          data={EVENTS_FOLLOWED}
-          style={{backgroundColor: theme.colors.secondary + '1A'}}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{paddingVertical: 10}}
-          ListHeaderComponent={
-            <View style={{alignItems: 'center'}}>
-              <ImageBackground
-                // onPress={() => navigation.navigate('BrowseEvent', item.id)}
-                style={styles.myimagebg}
-                imageStyle={styles.myimagestyle}
-                source={{uri: 'https://picsum.photos/500'}}>
-                <View style={{position: 'absolute', bottom: -10}}>
-                  <Image
-                    source={require('../../../assets/add_live.png')}
-                    style={{width: 35, resizeMode: 'contain', height: 35}}
-                  />
-                </View>
-              </ImageBackground>
-              <Text
-                style={{
-                  fontSize: 12,
-                  textAlign: 'center',
-                  fontWeight: '700',
-                  width: 100,
-                  //   borderWidth: 1,
-                  marginVertical: 5,
-                }}>
-                Add Yours
-              </Text>
-            </View>
-          }
-          renderItem={({item, index}) => (
-            <View style={{alignItems: 'center'}}>
-              <ImageBackground
-                // onPress={() => navigation.navigate('BrowseEvent', item.id)}
-                style={styles.imagebg}
-                imageStyle={styles.imagestyle}
-                source={{uri: item.image}}>
-                <View style={{position: 'absolute', bottom: -15}}>
-                  <Image
-                    source={require('../../../assets/Live_icon.png')}
-                    style={{width: 35, resizeMode: 'contain', height: 35}}
-                  />
-                </View>
-              </ImageBackground>
-              <Text
-                style={{
-                  fontSize: 12,
-                  textAlign: 'center',
-                  fontWeight: '700',
-                  width: 100,
-                  //   borderWidth: 1,
-                  marginVertical: 5,
-                }}>
-                {item.name}
-              </Text>
-            </View>
-          )}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('ChatList')}
+        style={styles.fabcontainer}>
+        <Image
+          style={{
+            height: 30,
+            width: 30,
+            resizeMode: 'contain',
+          }}
+          source={require('../../../assets/chat_icon.png')}
         />
-      </View>
-      <View style={{flex: 1}}>
-        <FlatList
-          data={EVENTS_FOLLOWED}
-          //   style={{backgroundColor: theme.colors.secondary + '1A'}}
-          //   horizontal
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{paddingVertical: 10}}
-          renderItem={({item, index}) => (
-            <View
-              style={{
-                alignItems: 'center',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                marginHorizontal: 13,
-                marginVertical: 15,
-              }}>
-              <View
-                style={{
-                  backgroundColor: theme.colors.secondary + '1A',
-                  paddingVertical: 20,
-                  paddingHorizontal: 15,
-                  borderRadius: 10,
-                }}>
+      </TouchableOpacity>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{marginTop: 10}}>
+          <FlatList
+            data={EVENTS_FOLLOWED}
+            style={{backgroundColor: theme.colors.secondary + '1A'}}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{paddingVertical: 10}}
+            ListHeaderComponent={
+              <View style={{alignItems: 'center'}}>
                 <ImageBackground
-                  style={{
-                    width: Dimensions.get('window').width / 1.4,
-                    height: Dimensions.get('window').height / 5,
-                    borderRadius: 20,
-                  }}
-                  imageStyle={{
-                    width: Dimensions.get('window').width / 1.4,
-                    height: Dimensions.get('window').height / 5,
-                    borderRadius: 10,
-                  }}
+                  // onPress={() => navigation.navigate('BrowseEvent', item.id)}
+                  style={styles.myimagebg}
+                  imageStyle={styles.myimagestyle}
                   source={{uri: 'https://picsum.photos/500'}}>
-                  <View style={{position: 'absolute', top: -15, left: -15}}>
+                  <View style={{position: 'absolute', bottom: -10}}>
                     <Image
-                      source={require('../../../assets/More_.png')}
-                      style={{width: 50, resizeMode: 'contain', height: 50}}
+                      source={require('../../../assets/add_live.png')}
+                      style={{width: 35, resizeMode: 'contain', height: 35}}
                     />
                   </View>
                 </ImageBackground>
-                <View style={{width: 270}}>
-                  <TextFormatted
-                    style={{
-                      fontSize: 10,
-                      marginVertical: 10,
-                      lineHeight: 23,
-                    }}>
-                    <TextFormatted
-                      style={{
-                        fontSize: 10,
-                        marginVertical: 10,
-                        color: theme.colors.Black,
-                        fontWeight: '600',
-                      }}>
-                      joshua_l{' '}
-                    </TextFormatted>
-                    The game in Japan was amazing and I want to share some
-                    photos...
-                    <TextFormatted
-                      style={{
-                        fontSize: 10,
-                        marginVertical: 10,
-                        color: theme.colors.secondary,
-                        fontWeight: '600',
-                        textDecorationLine: 'underline',
-                      }}>
-                      See More
-                    </TextFormatted>
-                  </TextFormatted>
-                </View>
+                <Text
+                  style={{
+                    fontSize: 12,
+                    textAlign: 'center',
+                    fontWeight: '700',
+                    width: 100,
+                    //   borderWidth: 1,
+                    marginVertical: 5,
+                  }}>
+                  Add Yours
+                </Text>
               </View>
+            }
+            renderItem={({item, index}) => (
+              <TouchableOpacity
+                style={{alignItems: 'center'}}
+                onPress={() => navigation.navigate('SeeLive', item)}>
+                <ImageBackground
+                  style={styles.imagebg}
+                  imageStyle={styles.imagestyle}
+                  source={{uri: item.image}}>
+                  <View style={{position: 'absolute', bottom: -15}}>
+                    <Image
+                      source={require('../../../assets/Live_icon.png')}
+                      style={{width: 35, resizeMode: 'contain', height: 35}}
+                    />
+                  </View>
+                </ImageBackground>
+                <Text
+                  style={{
+                    fontSize: 12,
+                    textAlign: 'center',
+                    fontWeight: '700',
+                    width: 100,
+                    //   borderWidth: 1,
+                    marginVertical: 5,
+                  }}>
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
+        <View style={{flex: 1}}>
+          <FlatList
+            data={EVENTS_FOLLOWED}
+            showsVerticalScrollIndicator={false}
+            scrollEnabled={false}
+            contentContainerStyle={{paddingVertical: 10}}
+            renderItem={({item, index}) => (
               <View
                 style={{
                   alignItems: 'center',
+                  flexDirection: 'row',
                   justifyContent: 'space-between',
-                  height: Dimensions.get('window').height / 4,
+                  marginHorizontal: 13,
+                  marginVertical: 15,
                 }}>
-                <ImageBackground
+                <View
                   style={{
-                    height: 45,
-                    width: 45,
-                    borderRadius: 50,
-                  }}
-                  imageStyle={{
-                    height: 45,
-                    width: 45,
-                    resizeMode: 'contain',
-                    borderRadius: 50,
-                  }}
-                  source={{uri: 'https://picsum.photos/500'}}>
-                  <View style={{position: 'absolute', right: 0, top: -5}}>
-                    <Image
-                      style={{height: 15, width: 15, resizeMode: 'contain'}}
-                      source={require('../../../assets/tick.png')}
-                    />
+                    backgroundColor: theme.colors.secondary + '1A',
+                    paddingVertical: 20,
+                    paddingHorizontal: 15,
+                    borderRadius: 10,
+                  }}>
+                  <ImageBackground
+                    style={{
+                      width: Dimensions.get('window').width / 1.4,
+                      height: Dimensions.get('window').height / 5,
+                      borderRadius: 20,
+                    }}
+                    imageStyle={{
+                      width: Dimensions.get('window').width / 1.4,
+                      height: Dimensions.get('window').height / 5,
+                      borderRadius: 10,
+                    }}
+                    source={{uri: 'https://picsum.photos/500'}}>
+                    <View style={{position: 'absolute', top: -15, left: -15}}>
+                      <Image
+                        source={require('../../../assets/More_.png')}
+                        style={{width: 50, resizeMode: 'contain', height: 50}}
+                      />
+                    </View>
+                  </ImageBackground>
+                  <View style={{width: 270}}>
+                    <TextFormatted
+                      style={{
+                        fontSize: 10,
+                        marginVertical: 10,
+                        lineHeight: 23,
+                      }}>
+                      <TextFormatted
+                        style={{
+                          fontSize: 10,
+                          marginVertical: 10,
+                          color: theme.colors.Black,
+                          fontWeight: '600',
+                        }}>
+                        joshua_l{' '}
+                      </TextFormatted>
+                      The game in Japan was amazing and I want to share some
+                      photos...
+                      <TextFormatted
+                        style={{
+                          fontSize: 10,
+                          marginVertical: 10,
+                          color: theme.colors.secondary,
+                          fontWeight: '600',
+                          textDecorationLine: 'underline',
+                        }}>
+                        See More
+                      </TextFormatted>
+                    </TextFormatted>
                   </View>
-                </ImageBackground>
-
-                <View style={{alignItems: 'center'}}>
-                  <Image
-                    style={{
-                      height: 23,
-                      width: 23,
-                      resizeMode: 'contain',
-                      marginBottom: 5,
-                    }}
-                    source={require('../../../assets/Red_heart.png')}
-                  />
-                  <TextFormatted style={{fontSize: 12, fontWeight: '600'}}>
-                    23
-                  </TextFormatted>
                 </View>
-
-                <View style={{alignItems: 'center'}}>
-                  <Image
-                    style={{
-                      height: 23,
-                      width: 23,
-                      resizeMode: 'contain',
-                      marginBottom: 5,
-                    }}
-                    source={require('../../../assets/Comments.png')}
-                  />
-                  <TextFormatted style={{fontSize: 12, fontWeight: '600'}}>
-                    23
-                  </TextFormatted>
-                </View>
-
-                <Image
+                <View
                   style={{
-                    height: 29,
-                    width: 29,
-                    resizeMode: 'contain',
-                    marginBottom: 5,
-                  }}
-                  source={require('../../../assets/Donate.png')}
-                />
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    height: Dimensions.get('window').height / 4,
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('OtherUserProfile')}>
+                    <ImageBackground
+                      style={{
+                        height: 45,
+                        width: 45,
+                        borderRadius: 50,
+                      }}
+                      imageStyle={{
+                        height: 45,
+                        width: 45,
+                        resizeMode: 'contain',
+                        borderRadius: 50,
+                      }}
+                      source={{uri: 'https://picsum.photos/500'}}>
+                      <View style={{position: 'absolute', right: 0, top: -5}}>
+                        <Image
+                          style={{height: 15, width: 15, resizeMode: 'contain'}}
+                          source={require('../../../assets/tick.png')}
+                        />
+                      </View>
+                    </ImageBackground>
+                  </TouchableOpacity>
+
+                  <View style={{alignItems: 'center'}}>
+                    <Image
+                      style={{
+                        height: 23,
+                        width: 23,
+                        resizeMode: 'contain',
+                        marginBottom: 5,
+                      }}
+                      source={require('../../../assets/Red_heart.png')}
+                    />
+                    <TextFormatted style={{fontSize: 12, fontWeight: '600'}}>
+                      23
+                    </TextFormatted>
+                  </View>
+
+                  <View style={{alignItems: 'center'}}>
+                    <Image
+                      style={{
+                        height: 23,
+                        width: 23,
+                        resizeMode: 'contain',
+                        marginBottom: 5,
+                      }}
+                      source={require('../../../assets/Comments.png')}
+                    />
+                    <TextFormatted style={{fontSize: 12, fontWeight: '600'}}>
+                      23
+                    </TextFormatted>
+                  </View>
+
+                  <Image
+                    style={{
+                      height: 29,
+                      width: 29,
+                      resizeMode: 'contain',
+                      marginBottom: 5,
+                    }}
+                    source={require('../../../assets/Donate.png')}
+                  />
+                </View>
               </View>
-            </View>
-          )}
-        />
-      </View>
+            )}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -359,5 +379,29 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     width: Dimensions.get('window').width / 6,
     height: Dimensions.get('window').width / 6,
+  },
+  fabcontainer: {
+    flex: 1,
+
+    backgroundColor: theme.colors.primary,
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    zIndex: 10,
+    paddingHorizontal: 13,
+    paddingVertical: 13,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
   },
 });

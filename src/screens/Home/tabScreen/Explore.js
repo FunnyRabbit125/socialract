@@ -55,22 +55,19 @@ export default function Explore() {
         backgroundColor={theme.colors.secondary}
         textcolor={theme.colors.primary}
       />
-
-      <View style={{flex: 1}}>
-        {/* <Image
+      <TouchableOpacity
+        onPress={() => navigation.navigate('ChatList')}
+        style={styles.fabcontainer}>
+        <Image
           style={{
-            height: 28,
-            width: 28,
-            marginRight: 5,
+            height: 30,
+            width: 30,
             resizeMode: 'contain',
-            position: 'absolute',
-            margin: 16,
-            right: 0,
-            bottom: 0,
           }}
-          source={require('../../../assets/Donate.png')}
-        /> */}
-
+          source={require('../../../assets/chat_icon.png')}
+        />
+      </TouchableOpacity>
+      <View style={{flex: 1, marginTop: 20}}>
         <FlatList
           data={EVENTS_FOLLOWED}
           //   horizontal
@@ -236,5 +233,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 7,
     borderRadius: 5,
+  },
+  fabcontainer: {
+    flex: 1,
+
+    backgroundColor: theme.colors.primary,
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    zIndex: 10,
+    paddingHorizontal: 13,
+    paddingVertical: 13,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
   },
 });

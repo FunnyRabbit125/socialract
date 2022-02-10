@@ -35,9 +35,9 @@ export default function CustomTextInput({
     <View>
       <View
         style={{
-          backgroundColor: theme.colors.Black,
+          backgroundColor: theme.colors.searchbar,
           paddingHorizontal: 20,
-          borderRadius: 30,
+          borderRadius: 10,
           marginTop: 10,
           opacity: opacitytwo,
           width: Dimensions.get('window').width - 40,
@@ -57,18 +57,11 @@ export default function CustomTextInput({
             flexDirection: 'row',
             alignItems: 'center',
           }}>
-          {!!homeSearch && (
-            <Image
-              style={{height: 20, width: 20, resizeMode: 'contain'}}
-              source={require('../Assets/Cropping/Icons/Searchgray.png')}
-            />
-          )}
-          {!!searchscreen && (
-            <Image
-              style={{height: 20, width: 20, resizeMode: 'contain'}}
-              source={require('../Assets/Cropping/Icons/Search_White.png')}
-            />
-          )}
+          <Image
+            style={{height: 19, width: 19, resizeMode: 'contain'}}
+            source={require('../assets/Search_gray.png')}
+          />
+
           <TextInput
             editable={editable}
             style={[styles.textInput, {height: height}]}
@@ -76,7 +69,7 @@ export default function CustomTextInput({
             keyboardType={keyboardType}
             secureTextEntry={secureTextEntry}
             placeholder={placeholder}
-            placeholderTextColor={theme.colors.OtherText}
+            placeholderTextColor={theme.colors.searchbar_text}
             value={value}
             onChangeText={onChangeText}
             onSubmitEditing={onSubmitEditing}
@@ -85,7 +78,7 @@ export default function CustomTextInput({
           {!!searchscreen && (
             <Image
               style={{height: 20, width: 20, resizeMode: 'contain'}}
-              source={require('../Assets/Cropping/Icons/Filters.png')}
+              // source={require('../Assets/Cropping/Icons/Filters.png')}
             />
           )}
         </View>
@@ -97,10 +90,10 @@ export default function CustomTextInput({
 const styles = StyleSheet.create({
   textInput: {
     fontWeight: '600',
-    fontSize: 15,
+    fontSize: 16,
     paddingTop: 8,
     paddingBottom: 6,
-    color: theme.colors.OtherText,
+    color: theme.colors.searchbar_text,
     flex: 1,
     paddingHorizontal: 10,
   },

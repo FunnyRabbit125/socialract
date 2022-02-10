@@ -48,12 +48,25 @@ export default function Videos() {
         barStyle="dark-content"
       />
 
-      <View style={{marginTop: 20}}>
+      <View style={{}}>
         <FlatList
           data={EVENTS_FOLLOWED}
           numColumns={3}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{paddingVertical: 10}}
+          ListEmptyComponent={
+            <TextFormatted
+              style={{
+                fontSize: 18,
+                fontWeight: '700',
+                color: theme.colors.OtherText,
+                marginHorizontal: 80,
+                textAlign: 'center',
+                marginTop: 20,
+              }}>
+              Please follow this user to view their posts
+            </TextFormatted>
+          }
+          // contentContainerStyle={{paddingVertical: 10}}
           renderItem={({item, index}) => (
             <View style={{alignItems: 'center'}}>
               <Image style={styles.imagebg} source={{uri: item.image}} />
