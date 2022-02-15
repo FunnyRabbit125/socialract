@@ -35,7 +35,7 @@ export default function CustomTextInput({
     <View>
       <View
         style={{
-          backgroundColor: theme.colors.searchbar,
+          backgroundColor: theme.colors.primary,
           paddingHorizontal: 20,
           borderRadius: 10,
           marginTop: 10,

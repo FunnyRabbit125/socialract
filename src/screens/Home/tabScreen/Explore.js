@@ -111,7 +111,12 @@ export default function Explore() {
                       </View>
                     </ImageBackground>
 
-                    <TextFormatted style={{fontSize: 11, fontWeight: '700'}}>
+                    <TextFormatted
+                      style={{
+                        color: theme.colors.Black,
+                        fontSize: 11,
+                        fontWeight: '700',
+                      }}>
                       Joshua_Azad
                     </TextFormatted>
                   </View>
@@ -127,7 +132,12 @@ export default function Explore() {
                       }}
                       source={require('../../../assets/Red_heart.png')}></Image>
 
-                    <TextFormatted style={{fontSize: 11, fontWeight: '700'}}>
+                    <TextFormatted
+                      style={{
+                        color: theme.colors.Black,
+                        fontSize: 11,
+                        fontWeight: '700',
+                      }}>
                       23
                     </TextFormatted>
                   </View>
@@ -143,7 +153,12 @@ export default function Explore() {
                       }}
                       source={require('../../../assets/Comments.png')}></Image>
 
-                    <TextFormatted style={{fontSize: 11, fontWeight: '700'}}>
+                    <TextFormatted
+                      style={{
+                        color: theme.colors.Black,
+                        fontSize: 11,
+                        fontWeight: '700',
+                      }}>
                       23
                     </TextFormatted>
                   </View>

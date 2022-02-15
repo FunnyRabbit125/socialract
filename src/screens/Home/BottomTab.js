@@ -138,17 +138,18 @@ export default function TabScreen({navigation}) {
           onPress={() => setCurrentPage(4)}
           style={{
             width: '20%',
-            borderRadius: 10,
+            borderRadius: 50,
             alignItems: 'center',
             justifyContent: 'center',
+            overflow: 'hidden',
           }}>
           <Image
             style={{
               height: 38,
               width: 38,
               marginTop: 5,
-              resizeMode: 'contain',
-              borderRadius: 20,
+              resizeMode: 'cover',
+              borderRadius: 50,
               borderWidth: 2,
               borderColor:
                 currentPage == 4

@@ -135,7 +135,7 @@ export default function Wallet() {
             />
           </TouchableOpacity>
         </View>
-        <View style={{width: '33%'}}>
+        <View style={{width: '35%'}}>
           <TextFormatted
             style={{
               color: theme.colors.primary,
@@ -248,7 +248,12 @@ export default function Wallet() {
 
                       //   borderWidth: 1,
                     }}>
-                    <TextFormatted style={{fontWeight: '700', fontSize: 16}}>
+                    <TextFormatted
+                      style={{
+                        color: theme.colors.Black,
+                        fontWeight: '700',
+                        fontSize: 16,
+                      }}>
                       $399.00
                     </TextFormatted>
 

@@ -74,11 +74,6 @@ const EVENTS_FOLLOWED = [
 export default function Notification() {
   return (
     <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
-      <Statusbar
-        backgroundColor={theme.colors.primary}
-        barStyle="dark-content"
-      />
-
       <View style={{flex: 1}}>
         <FlatList
           data={EVENTS_FOLLOWED}
@@ -113,6 +108,7 @@ export default function Notification() {
                   <View style={{flexShrink: 1}}>
                     <TextFormatted
                       style={{
+                        color: theme.colors.Black,
                         fontSize: 13,
                         marginVertical: 10,
                         lineHeight: 23,

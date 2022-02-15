@@ -151,6 +151,7 @@ export default function ChatList() {
                     style={{
                       fontSize: 13,
                       fontWeight: '700',
+                      color: theme.colors.Black,
                     }}>
                     Marley Philips
                   </TextFormatted>

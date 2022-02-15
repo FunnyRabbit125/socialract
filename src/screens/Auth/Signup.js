@@ -54,7 +54,7 @@ export default function Signup() {
           }}>
           <Image
             style={{
-              resizeMode: 'contain',
+              resizeMode: 'cover',
               width: Dimensions.get('window').width / 4,
               height: Dimensions.get('window').width / 4,
               borderWidth: 3,

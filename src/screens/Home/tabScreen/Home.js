@@ -160,6 +160,7 @@ export default function Home() {
                     fontWeight: '700',
                     width: 100,
                     //   borderWidth: 1,
+                    color: theme.colors.Black,
                     marginVertical: 5,
                   }}>
                   Add Story
@@ -206,8 +207,9 @@ export default function Home() {
                     width: 100,
                     //   borderWidth: 1,
                     marginVertical: 5,
+                    color: theme.colors.Black,
                   }}>
-                  Add Story
+                  See Story
                 </Text>
               </TouchableOpacity>
             )}
@@ -260,6 +262,7 @@ export default function Home() {
                         fontSize: 10,
                         marginVertical: 10,
                         lineHeight: 23,
+                        color: theme.colors.Black,
                       }}>
                       <TextFormatted
                         style={{
@@ -302,7 +305,7 @@ export default function Home() {
                       imageStyle={{
                         height: 45,
                         width: 45,
-                        resizeMode: 'contain',
+                        resizeMode: 'cover',
                         borderRadius: 50,
                       }}
                       source={{uri: 'https://picsum.photos/500'}}>
@@ -325,7 +328,12 @@ export default function Home() {
                       }}
                       source={require('../../../assets/Red_heart.png')}
                     />
-                    <TextFormatted style={{fontSize: 12, fontWeight: '600'}}>
+                    <TextFormatted
+                      style={{
+                        color: theme.colors.Black,
+                        fontSize: 12,
+                        fontWeight: '600',
+                      }}>
                       23
                     </TextFormatted>
                   </View>
@@ -340,7 +348,12 @@ export default function Home() {
                       }}
                       source={require('../../../assets/Comments.png')}
                     />
-                    <TextFormatted style={{fontSize: 12, fontWeight: '600'}}>
+                    <TextFormatted
+                      style={{
+                        color: theme.colors.Black,
+                        fontSize: 12,
+                        fontWeight: '600',
+                      }}>
                       23
                     </TextFormatted>
                   </View>

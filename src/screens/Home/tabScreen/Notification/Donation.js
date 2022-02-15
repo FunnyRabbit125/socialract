@@ -74,11 +74,6 @@ const EVENTS_FOLLOWED = [
 export default function Donation() {
   return (
     <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
-      <Statusbar
-        backgroundColor={theme.colors.primary}
-        barStyle="dark-content"
-      />
-
       <View style={{flex: 1}}>
         <FlatList
           data={EVENTS_FOLLOWED}
@@ -131,6 +126,7 @@ export default function Donation() {
                       fontSize: 13,
                       marginVertical: 10,
                       lineHeight: 23,
+                      color: theme.colors.Black,
                       fontWeight: '700',
                     }}>
                     Marley Philips

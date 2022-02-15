@@ -72,8 +72,8 @@ export default function Profile() {
             style={{
               height: 50,
               width: 50,
-              resizeMode: 'contain',
-              borderRadius: 50,
+              resizeMode: 'cover',
+              borderRadius: 150,
             }}
             source={{uri: 'https://picsum.photos/500'}}
           />

@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {
   FlatList,
   Image,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -211,17 +212,33 @@ function Chat(props) {
                         marginLeft: isOwn == true ? 10 : 0,
                         marginRight: isOwn == true ? 0 : 10,
                       }}>
-                      <Image
+                      <View
                         style={{
+                          shadowColor: '#000',
+                          shadowOffset: {
+                            width: 0,
+                            height: 5,
+                          },
+                          shadowOpacity: 0.34,
+                          shadowRadius: 6.27,
+
+                          elevation: 10,
                           height: 35,
                           width: 35,
-                          resizeMode: 'cover',
                           borderRadius: 50,
-                          borderWidth: 2,
-                          borderColor: theme.colors.secondary,
-                        }}
-                        source={{uri: 'https://picsum.photos/500'}}
-                      />
+                        }}>
+                        <Image
+                          style={{
+                            height: 35,
+                            width: 35,
+                            resizeMode: 'cover',
+                            borderRadius: 50,
+                            borderWidth: 2,
+                            borderColor: theme.colors.secondary,
+                          }}
+                          source={{uri: 'https://picsum.photos/500'}}
+                        />
+                      </View>
                       <TextFormatted style={styles.time}>
                         10:30 Am
                       </TextFormatted>
@@ -308,7 +325,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 20,
     borderRadius: 5,
-    paddingVertical: 13,
+    paddingVertical: Platform.OS === 'ios' ? 13 : 0,
   },
   icon: {
     height: 25,
