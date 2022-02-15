@@ -58,17 +58,16 @@ export default function Home() {
           marginHorizontal: 20,
           paddingBottom: 10,
         }}>
-        <TextFormatted
+        <Image
           style={{
-            fontSize: 24,
-            fontWeight: '800',
-            color: theme.colors.secondary,
+            resizeMode: 'contain',
+            width: Dimensions.get('window').width / 3,
+            height: Dimensions.get('window').width / 6,
             // borderWidth: 1,
-            width: 200,
-            marginRight: 20,
-          }}>
-          Socialract
-        </TextFormatted>
+            alignSelf: 'center',
+          }}
+          source={require('../../../assets/logo_.png')}
+        />
 
         <View
           style={{
@@ -76,21 +75,29 @@ export default function Home() {
             alignItems: 'center',
             // borderWidth: 1,
             justifyContent: 'space-between',
-            width: Dimensions.get('window').width,
+            width: Dimensions.get('window').width / 5,
             flexShrink: 1,
           }}>
-          <Image
-            style={{height: 30, width: 30, resizeMode: 'contain'}}
-            source={require('../../../assets/Live.png')}
-          />
-          <Image
-            style={{height: 25, width: 25, resizeMode: 'contain'}}
-            source={require('../../../assets/Wallet.png')}
-          />
-          <Image
-            style={{height: 25, width: 25, resizeMode: 'contain'}}
-            source={require('../../../assets/Search.png')}
-          />
+          <TouchableOpacity>
+            <Image
+              style={{height: 30, width: 30, resizeMode: 'contain'}}
+              source={require('../../../assets/Live.png')}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            //
+            onPress={() => navigation.navigate('Wallet')}>
+            <Image
+              style={{height: 25, width: 25, resizeMode: 'contain'}}
+              source={require('../../../assets/Wallet.png')}
+            />
+          </TouchableOpacity>
+          {/* <TouchableOpacity>
+            <Image
+              style={{height: 25, width: 25, resizeMode: 'contain'}}
+              source={require('../../../assets/Search.png')}
+            />
+          </TouchableOpacity> */}
         </View>
       </View>
       <TouchableOpacity
@@ -109,21 +116,40 @@ export default function Home() {
         <View style={{marginTop: 10}}>
           <FlatList
             data={EVENTS_FOLLOWED}
-            style={{backgroundColor: theme.colors.secondary + '1A'}}
             horizontal
+            style={{marginLeft: 5}}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{paddingVertical: 10}}
             ListHeaderComponent={
-              <View style={{alignItems: 'center'}}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  // borderWidth: 1,
+                  paddingBottom: 5,
+                  marginRight: 10,
+                  marginLeft: 15,
+                  width: Dimensions.get('window').width / 4.3,
+                  borderRadius: 10,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 2,
+                  },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 3.84,
+
+                  elevation: 5,
+                  backgroundColor: '#fff',
+                }}>
                 <ImageBackground
                   // onPress={() => navigation.navigate('BrowseEvent', item.id)}
                   style={styles.myimagebg}
                   imageStyle={styles.myimagestyle}
                   source={{uri: 'https://picsum.photos/500'}}>
-                  <View style={{position: 'absolute', bottom: -10}}>
+                  <View style={{position: 'absolute', top: -12, right: -3}}>
                     <Image
-                      source={require('../../../assets/add_live.png')}
-                      style={{width: 35, resizeMode: 'contain', height: 35}}
+                      source={require('../../../assets/add_story.png')}
+                      style={{width: 24, resizeMode: 'contain', height: 35}}
                     />
                   </View>
                 </ImageBackground>
@@ -136,22 +162,39 @@ export default function Home() {
                     //   borderWidth: 1,
                     marginVertical: 5,
                   }}>
-                  Add Yours
+                  Add Story
                 </Text>
               </View>
             }
             renderItem={({item, index}) => (
               <TouchableOpacity
-                style={{alignItems: 'center'}}
-                onPress={() => navigation.navigate('SeeLive', item)}>
+                style={{
+                  alignItems: 'center',
+                  // borderWidth: 1,
+                  paddingBottom: 5,
+                  marginHorizontal: 10,
+                  width: Dimensions.get('window').width / 4.3,
+                  borderRadius: 10,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 2,
+                  },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 3.84,
+
+                  elevation: 5,
+                  backgroundColor: '#fff',
+                }}>
                 <ImageBackground
-                  style={styles.imagebg}
-                  imageStyle={styles.imagestyle}
-                  source={{uri: item.image}}>
-                  <View style={{position: 'absolute', bottom: -15}}>
+                  // onPress={() => navigation.navigate('BrowseEvent', item.id)}
+                  style={styles.myimagebg}
+                  imageStyle={styles.myimagestyle}
+                  source={{uri: 'https://picsum.photos/500'}}>
+                  <View style={{position: 'absolute', top: -12, right: -8}}>
                     <Image
-                      source={require('../../../assets/Live_icon.png')}
-                      style={{width: 35, resizeMode: 'contain', height: 35}}
+                      source={require('../../../assets/live_icon_.png')}
+                      style={{width: 38, resizeMode: 'contain', height: 38}}
                     />
                   </View>
                 </ImageBackground>
@@ -164,7 +207,7 @@ export default function Home() {
                     //   borderWidth: 1,
                     marginVertical: 5,
                   }}>
-                  {item.name}
+                  Add Story
                 </Text>
               </TouchableOpacity>
             )}
@@ -175,7 +218,7 @@ export default function Home() {
             data={EVENTS_FOLLOWED}
             showsVerticalScrollIndicator={false}
             scrollEnabled={false}
-            contentContainerStyle={{paddingVertical: 10}}
+            contentContainerStyle={{}}
             renderItem={({item, index}) => (
               <View
                 style={{
@@ -359,26 +402,24 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.secondary,
     // overflow: 'hidden',
     alignItems: 'center',
+    borderWidth: 1,
   },
   imagestyle: {
     borderWidth: 2,
     borderRadius: 10,
     borderColor: theme.colors.primary,
     resizeMode: 'cover',
-    width: Dimensions.get('window').width / 6,
-    height: Dimensions.get('window').width / 6,
   },
   myimagebg: {
     borderRadius: 10,
-    width: Dimensions.get('window').width / 5.7,
-    height: Dimensions.get('window').width / 5.7,
+    width: Dimensions.get('window').width / 4.3,
+    height: Dimensions.get('window').width / 4.3,
     alignItems: 'center',
   },
   myimagestyle: {
-    borderRadius: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
     resizeMode: 'cover',
-    width: Dimensions.get('window').width / 6,
-    height: Dimensions.get('window').width / 6,
   },
   fabcontainer: {
     flex: 1,

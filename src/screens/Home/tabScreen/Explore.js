@@ -78,12 +78,12 @@ export default function Explore() {
               <ImageBackground
                 style={{
                   width: Dimensions.get('window').width - 40,
-                  height: Dimensions.get('window').height / 3.7,
+                  height: Dimensions.get('window').height / 3.3,
                   borderRadius: 10,
                 }}
                 imageStyle={{
                   width: Dimensions.get('window').width - 40,
-                  height: Dimensions.get('window').height / 3.7,
+                  height: Dimensions.get('window').height / 3.3,
                   borderRadius: 10,
                 }}
                 source={{uri: 'https://picsum.photos/500'}}>

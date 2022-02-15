@@ -62,7 +62,7 @@ export default function TabScreen({navigation}) {
             source={
               currentPage == 0
                 ? require('../../assets/Home_Active.png')
-                : require('../../assets/Home.png')
+                : require('../../assets/Home_inactive.png')
             }
           />
         </TouchableOpacity>
@@ -85,8 +85,8 @@ export default function TabScreen({navigation}) {
             // source={require('../../../assets/My_Bookings.png')}
             source={
               currentPage == 1
-                ? require('../../assets/Discover_Active.png')
-                : require('../../assets/Discover.png')
+                ? require('../../assets/search_active.png')
+                : require('../../assets/Search_gray_bottom.png')
             }
           />
         </TouchableOpacity>
@@ -108,7 +108,7 @@ export default function TabScreen({navigation}) {
             source={
               currentPage == 2
                 ? require('../../assets/Create.png')
-                : require('../../assets/Create.png')
+                : require('../../assets/Create_inactive.png')
             }
           />
         </TouchableOpacity>
@@ -130,7 +130,7 @@ export default function TabScreen({navigation}) {
             source={
               currentPage == 3
                 ? require('../../assets/Notifications_Active.png')
-                : require('../../assets/Notifications.png')
+                : require('../../assets/Notifications_inactive.png')
             }
           />
         </TouchableOpacity>
@@ -150,7 +150,10 @@ export default function TabScreen({navigation}) {
               resizeMode: 'contain',
               borderRadius: 20,
               borderWidth: 2,
-              borderColor: theme.colors.secondary,
+              borderColor:
+                currentPage == 4
+                  ? theme.colors.secondary
+                  : theme.colors.primary,
             }}
             source={{uri: 'https://picsum.photos/500'}}
           />

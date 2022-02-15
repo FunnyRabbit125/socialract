@@ -14,11 +14,12 @@ function SplashScreen({navigation}) {
 
   return (
     <ImageBackground
-      source={require('../../assets/Splashbg.png')}
+      source={require('../../assets/splash_1.png')}
       style={styles.container}
+      imageStyle={styles.image_container}
       imageStyle={{flex: 1, resizeMode: 'contain'}}>
       {/* <Statusbar backgroundColor="#000" barStyle="dark-content" /> */}
-      <Image style={styles.logo} source={require('../../assets/LOGO.png')} />
+      {/* <Image style={styles.logo} source={require('../../assets/LOGO.png')} /> */}
     </ImageBackground>
   );
 }
@@ -38,5 +39,9 @@ const styles = StyleSheet.create({
     // borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  image_container: {
+    flex: 1,
+    resizeMode: 'contain',
   },
 });

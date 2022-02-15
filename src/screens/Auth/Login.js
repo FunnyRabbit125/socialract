@@ -38,7 +38,7 @@ export default function Login() {
               // borderWidth: 1,
               alignSelf: 'center',
             }}
-            source={require('../../assets/LOGO_green.png')}
+            source={require('../../assets/logo_.png')}
           />
         </View>
 

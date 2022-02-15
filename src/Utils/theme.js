@@ -21,8 +21,8 @@ export const theme = {
     Get_Verified: '#8FB61C',
     red: '#FA4141',
     graph_color: '#AE7D00',
+    payment_Text: '#223263',
 
-    heading_Text: '#670000',
     Placeholder: '#B5B5B5',
     Like: '#1deb5c',
   },

@@ -8,6 +8,10 @@ import Settings from '../screens/Home/Settings';
 import Analytics from '../screens/Home/Analytics';
 import EditProfile from '../screens/Home/EditProfile';
 import SeeLive from '../screens/Home/SeeLive';
+import Wallet from '../screens/Home/Wallet';
+import Paymentmethod from '../screens/Home/Paymentmethod';
+import Cards from '../screens/Home/Cards';
+import AddNewCard from '../screens/Home/AddNewCard';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +30,10 @@ function App() {
       <Stack.Screen name="Analytics" component={Analytics} />
       <Stack.Screen name="EditProfile" component={EditProfile} />
       <Stack.Screen name="SeeLive" component={SeeLive} />
+      <Stack.Screen name="Wallet" component={Wallet} />
+      <Stack.Screen name="Paymentmethod" component={Paymentmethod} />
+      <Stack.Screen name="Cards" component={Cards} />
+      <Stack.Screen name="AddNewCard" component={AddNewCard} />
     </Stack.Navigator>
   );
 }

@@ -57,10 +57,10 @@ export default class OTPVerification extends Component {
           style={{
             flex: 1,
             backgroundColor: theme.colors.primary,
-            justifyContent: 'center',
+            marginTop: 50,
           }}>
           <Image
-            source={require('../../assets/LOGO_green.png')}
+            source={require('../../assets/logo_.png')}
             style={{
               width: Dimensions.get('window').width,
               height: Dimensions.get('window').width / 6,
@@ -108,7 +108,7 @@ export default class OTPVerification extends Component {
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
-                width: '70%',
+                width: '80%',
                 marginTop: 40,
               }}>
               <TextInput
@@ -233,5 +233,7 @@ const Styles = StyleSheet.create({
     shadowRadius: 1.41,
 
     elevation: 2,
+    marginRight: 8,
+    flexShrink: 1,
   },
 });
