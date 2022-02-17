@@ -72,7 +72,10 @@ export default function Login() {
           </TextFormatted>
         </TouchableOpacity>
         <View style={{marginHorizontal: 20, marginVertical: 20}}>
-          <Button buttontext={'Log in'} />
+          <Button
+            onPress={navigation.navigate('HomeNavigator')}
+            buttontext={'Log in'}
+          />
         </View>
         <View style={{height: 80}} />
 

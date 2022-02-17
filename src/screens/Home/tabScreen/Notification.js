@@ -34,7 +34,7 @@ export default function Notification() {
           <TextFormatted
             style={{
               color: theme.colors.primary,
-              fontWeight: currentPage == 0 ? '900' : '600',
+              fontWeight: currentPage == 0 ? '900' : '400',
               fontSize: 16,
             }}>
             Notifications
@@ -53,7 +53,7 @@ export default function Notification() {
           <TextFormatted
             style={{
               color: theme.colors.primary,
-              fontWeight: currentPage == 1 ? '900' : '600',
+              fontWeight: currentPage == 1 ? '900' : '400',
               fontSize: 16,
             }}>
             Donations

@@ -78,13 +78,35 @@ export default function Explore() {
               <ImageBackground
                 style={{
                   width: Dimensions.get('window').width - 40,
-                  height: Dimensions.get('window').height / 3.3,
-                  borderRadius: 10,
+                  height: Dimensions.get('window').height / 2.8,
+                  borderTopLeftRadius: 25,
+                  borderTopRightRadius: 25,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 10,
+                  },
+                  shadowOpacity: 0.53,
+                  shadowRadius: 13.97,
+
+                  elevation: 21,
+                  backgroundColor: theme.colors.primary,
                 }}
                 imageStyle={{
                   width: Dimensions.get('window').width - 40,
-                  height: Dimensions.get('window').height / 3.3,
-                  borderRadius: 10,
+                  height: Dimensions.get('window').height / 2.8,
+                  borderTopLeftRadius: 25,
+                  borderTopRightRadius: 25,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 10,
+                  },
+                  shadowOpacity: 0.53,
+                  shadowRadius: 13.97,
+
+                  elevation: 21,
+                  backgroundColor: theme.colors.primary,
                 }}
                 source={{uri: 'https://picsum.photos/500'}}>
                 <View style={{position: 'absolute', top: 15, left: 15}}>

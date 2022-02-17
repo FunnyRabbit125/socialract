@@ -12,6 +12,7 @@ import Wallet from '../screens/Home/Wallet';
 import Paymentmethod from '../screens/Home/Paymentmethod';
 import Cards from '../screens/Home/Cards';
 import AddNewCard from '../screens/Home/AddNewCard';
+import AddStory from '../screens/Home/AddStory';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,7 @@ function App() {
       <Stack.Screen name="Paymentmethod" component={Paymentmethod} />
       <Stack.Screen name="Cards" component={Cards} />
       <Stack.Screen name="AddNewCard" component={AddNewCard} />
+      <Stack.Screen name="AddStory" component={AddStory} />
     </Stack.Navigator>
   );
 }

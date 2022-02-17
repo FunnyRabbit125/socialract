@@ -61,6 +61,8 @@ export default function Profile() {
           alignItems: 'center',
           justifyContent: 'space-between',
           marginHorizontal: 20,
+          // borderWidth: 1,
+          paddingVertical: 10,
         }}>
         <View
           style={{
@@ -68,7 +70,7 @@ export default function Profile() {
             alignItems: 'center',
             width: 160,
           }}>
-          <Image
+          {/* <Image
             style={{
               height: 50,
               width: 50,
@@ -76,7 +78,7 @@ export default function Profile() {
               borderRadius: 150,
             }}
             source={{uri: 'https://picsum.photos/500'}}
-          />
+          /> */}
           <TextFormatted
             style={{
               fontSize: 14,

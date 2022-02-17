@@ -35,12 +35,12 @@ export default function Profile() {
           alignItems: 'center',
           justifyContent: 'space-between',
           marginHorizontal: 20,
+          paddingVertical: 10,
         }}>
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-            width: 160,
           }}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image
@@ -53,7 +53,7 @@ export default function Profile() {
               source={require('../../assets/Back.png')}
             />
           </TouchableOpacity>
-          <Image
+          {/* <Image
             style={{
               height: 50,
               width: 50,
@@ -61,7 +61,7 @@ export default function Profile() {
               borderRadius: 50,
             }}
             source={{uri: 'https://picsum.photos/500'}}
-          />
+          /> */}
           <TextFormatted
             style={{
               fontSize: 14,

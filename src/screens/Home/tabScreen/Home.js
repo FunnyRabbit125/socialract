@@ -50,6 +50,7 @@ export default function Home() {
         backgroundColor={theme.colors.primary}
         barStyle="dark-content"
       />
+      {/* HEADER */}
       <View
         style={{
           flexDirection: 'row',
@@ -89,7 +90,7 @@ export default function Home() {
             onPress={() => navigation.navigate('Wallet')}>
             <Image
               style={{height: 25, width: 25, resizeMode: 'contain'}}
-              source={require('../../../assets/Wallet.png')}
+              source={require('../../../assets/Wallet_gray.png')}
             />
           </TouchableOpacity>
           {/* <TouchableOpacity>
@@ -100,6 +101,9 @@ export default function Home() {
           </TouchableOpacity> */}
         </View>
       </View>
+      {/* HEADER */}
+
+      {/* FLOATING BUTTON */}
       <TouchableOpacity
         onPress={() => navigation.navigate('ChatList')}
         style={styles.fabcontainer}>
@@ -112,7 +116,10 @@ export default function Home() {
           source={require('../../../assets/chat_icon.png')}
         />
       </TouchableOpacity>
+      {/* FLOATING BUTTON */}
+
       <ScrollView showsVerticalScrollIndicator={false}>
+        {/* STORY LIST */}
         <View style={{marginTop: 10}}>
           <FlatList
             data={EVENTS_FOLLOWED}
@@ -121,7 +128,8 @@ export default function Home() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{paddingVertical: 10}}
             ListHeaderComponent={
-              <View
+              <TouchableOpacity
+                onPress={() => navigation.navigate('AddStory')}
                 style={{
                   alignItems: 'center',
                   // borderWidth: 1,
@@ -165,10 +173,11 @@ export default function Home() {
                   }}>
                   Add Story
                 </Text>
-              </View>
+              </TouchableOpacity>
             }
             renderItem={({item, index}) => (
               <TouchableOpacity
+                onPress={() => navigation.navigate('SeeLive')}
                 style={{
                   alignItems: 'center',
                   // borderWidth: 1,
@@ -215,6 +224,9 @@ export default function Home() {
             )}
           />
         </View>
+        {/* STORY LIST */}
+
+        {/* POST LIST */}
         <View style={{flex: 1}}>
           <FlatList
             data={EVENTS_FOLLOWED}
@@ -227,14 +239,14 @@ export default function Home() {
                   alignItems: 'center',
                   flexDirection: 'row',
                   justifyContent: 'space-between',
-                  marginHorizontal: 13,
+                  marginHorizontal: 15,
                   marginVertical: 15,
                 }}>
                 <View
                   style={{
-                    backgroundColor: theme.colors.secondary + '1A',
-                    paddingVertical: 20,
-                    paddingHorizontal: 15,
+                    backgroundColor: theme.colors.post_bg,
+                    paddingVertical: 10,
+                    paddingHorizontal: 10,
                     borderRadius: 10,
                   }}>
                   <ImageBackground
@@ -249,10 +261,10 @@ export default function Home() {
                       borderRadius: 10,
                     }}
                     source={{uri: 'https://picsum.photos/500'}}>
-                    <View style={{position: 'absolute', top: -15, left: -15}}>
+                    <View style={{position: 'absolute', top: -8, left: -13}}>
                       <Image
                         source={require('../../../assets/More_.png')}
-                        style={{width: 50, resizeMode: 'contain', height: 50}}
+                        style={{width: 35, resizeMode: 'contain', height: 35}}
                       />
                     </View>
                   </ImageBackground>
@@ -372,6 +384,7 @@ export default function Home() {
             )}
           />
         </View>
+        {/* POST LIST */}
       </ScrollView>
     </View>
   );

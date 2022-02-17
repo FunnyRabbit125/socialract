@@ -22,6 +22,7 @@ export const theme = {
     red: '#FA4141',
     graph_color: '#AE7D00',
     payment_Text: '#223263',
+    post_bg: '#EEFCF6',
 
     Placeholder: '#B5B5B5',
     Like: '#1deb5c',
