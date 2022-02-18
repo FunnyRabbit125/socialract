@@ -35,21 +35,21 @@ export default function CustomTextInput({
     <View>
       <View
         style={{
-          backgroundColor: theme.colors.primary,
+          backgroundColor: theme.colors.searchbar,
           paddingHorizontal: 20,
           borderRadius: 10,
           marginTop: 10,
           opacity: opacitytwo,
           width: Dimensions.get('window').width - 40,
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 0,
-            height: 2,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
+          // shadowColor: '#000',
+          // shadowOffset: {
+          //   width: 0,
+          //   height: 2,
+          // },
+          // shadowOpacity: 0.25,
+          // shadowRadius: 3.84,
 
-          elevation: 5,
+          // elevation: 5,
           paddingVertical: 7,
         }}>
         <View

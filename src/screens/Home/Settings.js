@@ -34,7 +34,7 @@ export default function Settings() {
         onPress={() => navigation.goBack()}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{alignItems: 'center', marginBottom: 10}}>
+        <View style={{alignItems: 'center', marginVertical: 10}}>
           <SearchBar placeholder={'Search'} />
         </View>
 
