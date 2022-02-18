@@ -13,6 +13,7 @@ import Paymentmethod from '../screens/Home/Paymentmethod';
 import Cards from '../screens/Home/Cards';
 import AddNewCard from '../screens/Home/AddNewCard';
 import AddStory from '../screens/Home/AddStory';
+import Upload_Audio from '../screens/Home/Upload_Audio';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,7 @@ function App() {
       <Stack.Screen name="Cards" component={Cards} />
       <Stack.Screen name="AddNewCard" component={AddNewCard} />
       <Stack.Screen name="AddStory" component={AddStory} />
+      <Stack.Screen name="Upload_Audio" component={Upload_Audio} />
     </Stack.Navigator>
   );
 }

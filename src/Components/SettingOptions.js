@@ -11,6 +11,7 @@ export default function SettingOptions({
   text,
   fontWeight,
   color,
+  fontSize,
 }) {
   return (
     <View>
@@ -25,6 +26,7 @@ export default function SettingOptions({
           style={{
             color: color || theme.colors.OtherText,
             fontWeight: fontWeight || '500',
+            fontSize: fontSize,
           }}>
           {text}
         </TextFormatted>

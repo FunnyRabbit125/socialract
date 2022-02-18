@@ -64,7 +64,7 @@ function Camera(props) {
 
   return (
     <View style={{flex: 1}}>
-      <Statusbar hidden={true} barStyle={'light-content'} />
+      <Statusbar hidden={true} />
       {!image ? (
         <RNCamera
           ref={CameraRef}
@@ -120,7 +120,8 @@ function Camera(props) {
                   top: 70,
                   right: 20,
                 }}>
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Upload_Audio')}>
                   <Image
                     style={{height: 22, width: 22, resizeMode: 'contain'}}
                     source={require('../../assets/Audio.png')}
@@ -268,23 +269,40 @@ function Camera(props) {
               width: dimensions.width,
             }}
           />
+
           <View
             style={{
               flexDirection: 'row',
-              justifyContent: 'space-evenly',
+              justifyContent: 'space-between',
               alignItems: 'center',
               paddingHorizontal: 20,
-              bottom: 20,
+              bottom: 90,
               position: 'absolute',
               width: dimensions.width,
+              backgroundColor: theme.colors.primary,
+              paddingVertical: 10,
+              borderColor: theme.colors.Placeholder,
+              borderBottomWidth: 3,
             }}>
             <TouchableOpacity
               onPress={() => {
                 navigation.goBack();
-              }}>
-              <Icon name="close" size={30} />
+              }}
+              style={{alignItems: 'center'}}>
+              <Image
+                source={require('../../assets/Rotate.png')}
+                style={{
+                  height: 26,
+                  width: 26,
+                  resizeMode: 'contain',
+                }}
+              />
+              <TextFormatted style={{fontSize: 12, marginTop: 5}}>
+                Rotate
+              </TextFormatted>
             </TouchableOpacity>
             <TouchableOpacity
+              style={{alignItems: 'center'}}
               onPress={async () => {
                 const response = await ImageResizer.createResizedImage(
                   image.uri,
@@ -304,13 +322,89 @@ function Camera(props) {
                 params.setImage(response.uri, response.name, 'image/jpeg');
                 navigation.goBack();
               }}>
-              <Icon name="check" size={80} />
+              <Image
+                source={require('../../assets/Adjust.png')}
+                style={{
+                  height: 30,
+                  width: 30,
+                  resizeMode: 'contain',
+                }}
+              />
+              <TextFormatted style={{fontSize: 12, marginTop: 5}}>
+                Adjust
+              </TextFormatted>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => setImage(null)}>
-              <Icon name="refresh" size={30} />
+            <TouchableOpacity
+              style={{alignItems: 'center'}}
+              onPress={() => setImage(null)}>
+              <Image
+                source={require('../../assets/Crop.png')}
+                style={{
+                  height: 30,
+                  width: 30,
+                  resizeMode: 'contain',
+                }}
+              />
+              <TextFormatted style={{fontSize: 12, marginTop: 5}}>
+                Crop
+              </TextFormatted>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity
+          {/* <View
+            style={{
+              height: 40,
+              backgroundColor: theme.colors.background,
+              width: '100%',
+            }}
+          /> */}
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              bottom: 30,
+              backgroundColor: theme.colors.primary,
+              paddingVertical: 15,
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+              <TouchableOpacity>
+                <Image
+                  source={require('../../assets/Downlaod.png')}
+                  style={{
+                    height: 30,
+                    width: 30,
+                    resizeMode: 'contain',
+                  }}
+                />
+              </TouchableOpacity>
+              <View style={{width: 20}} />
+
+              <TouchableOpacity>
+                <Image
+                  source={require('../../assets/Lock.png')}
+                  style={{
+                    height: 30,
+                    width: 30,
+                    resizeMode: 'contain',
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
+
+            <TouchableOpacity>
+              <TextFormatted
+                style={{fontWeight: '700', color: theme.colors.secondary}}>
+                ADD TO STORY {'>'}
+              </TextFormatted>
+            </TouchableOpacity>
+          </View>
+          {/* <TouchableOpacity
             style={{
               position: 'absolute',
               top: 20 + StatusBar.currentHeight,
@@ -332,6 +426,21 @@ function Camera(props) {
               });
             }}>
             <Text style={{color: 'white', fontSize: 16}}>Add Filter</Text>
+          </TouchableOpacity> */}
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              top: 20 + StatusBar.currentHeight,
+              right: 20,
+              backgroundColor: '#0005',
+              paddingHorizontal: 10,
+              paddingVertical: 5,
+              borderRadius: 8,
+            }}
+            onPress={() => {
+              navigation.goBack();
+            }}>
+            <Icon name="close" size={30} color={'#fff'} />
           </TouchableOpacity>
         </View>
       )}

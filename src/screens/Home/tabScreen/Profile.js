@@ -173,29 +173,59 @@ export default function Profile() {
             height: Dimensions.get('window').height / 5.5,
           }}>
           <View style={{alignItems: 'flex-start'}}>
-            <TextFormatted style={{fontSize: 16, fontWeight: '600'}}>
+            <TextFormatted
+              style={{
+                color: theme.colors.Black,
+                fontSize: 16,
+                fontWeight: '600',
+              }}>
               54
             </TextFormatted>
 
-            <TextFormatted style={{fontSize: 13, fontWeight: '500'}}>
+            <TextFormatted
+              style={{
+                color: theme.colors.Black,
+                fontSize: 13,
+                fontWeight: '500',
+              }}>
               Posts
             </TextFormatted>
           </View>
           <View style={{alignItems: 'flex-start'}}>
-            <TextFormatted style={{fontSize: 16, fontWeight: '600'}}>
+            <TextFormatted
+              style={{
+                color: theme.colors.Black,
+                fontSize: 16,
+                fontWeight: '600',
+              }}>
               154
             </TextFormatted>
 
-            <TextFormatted style={{fontSize: 13, fontWeight: '500'}}>
+            <TextFormatted
+              style={{
+                color: theme.colors.Black,
+                fontSize: 13,
+                fontWeight: '500',
+              }}>
               Followers
             </TextFormatted>
           </View>
           <View style={{alignItems: 'flex-start'}}>
-            <TextFormatted style={{fontSize: 16, fontWeight: '600'}}>
+            <TextFormatted
+              style={{
+                color: theme.colors.Black,
+                fontSize: 16,
+                fontWeight: '600',
+              }}>
               231
             </TextFormatted>
 
-            <TextFormatted style={{fontSize: 13, fontWeight: '500'}}>
+            <TextFormatted
+              style={{
+                color: theme.colors.Black,
+                fontSize: 13,
+                fontWeight: '500',
+              }}>
               Following
             </TextFormatted>
           </View>
@@ -203,7 +233,8 @@ export default function Profile() {
       </View>
 
       <View style={{marginVertical: 20, marginHorizontal: 20}}>
-        <TextFormatted style={{fontSize: 20, fontWeight: '700'}}>
+        <TextFormatted
+          style={{color: theme.colors.Black, fontSize: 20, fontWeight: '700'}}>
           Jacob West
         </TextFormatted>
         <TextFormatted
@@ -212,6 +243,7 @@ export default function Profile() {
             fontWeight: '400',
             width: Dimensions.get('window').width / 1.5,
             marginTop: 10,
+            color: theme.colors.Black,
           }}>
           Digital goodies designer @pixsellz Everything is designed.
         </TextFormatted>

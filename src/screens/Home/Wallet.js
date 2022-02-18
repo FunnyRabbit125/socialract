@@ -11,6 +11,7 @@ import React from 'react';
 import {theme} from '../../Utils/theme';
 import Statusbar from '../../Components/Statusbar';
 import TextFormatted from '../../Components/TextFormated';
+import Button from '../../Components/Button';
 import {useNavigation} from '@react-navigation/native';
 
 const DATA = [
@@ -302,6 +303,9 @@ export default function Wallet() {
             )}
           />
         </View>
+      </View>
+      <View style={{marginHorizontal: 20, marginBottom: 30}}>
+        <Button buttontext={'Payout'} />
       </View>
     </View>
   );

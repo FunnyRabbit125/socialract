@@ -238,15 +238,15 @@ export default function Home() {
                 style={{
                   alignItems: 'center',
                   flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginHorizontal: 15,
+                  justifyContent: 'space-evenly',
+                  // marginHorizontal: 15,
                   marginVertical: 15,
                 }}>
                 <View
                   style={{
                     backgroundColor: theme.colors.post_bg,
-                    paddingVertical: 10,
-                    paddingHorizontal: 10,
+                    paddingVertical: 5,
+                    paddingHorizontal: 5,
                     borderRadius: 10,
                   }}>
                   <ImageBackground

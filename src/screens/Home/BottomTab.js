@@ -3,6 +3,7 @@ import {Image, StatusBar, TouchableOpacity, View} from 'react-native';
 import Home from './tabScreen/Home';
 import Explore from './tabScreen/Explore';
 import Post from './tabScreen/Post';
+import PostBottomTab from '../Home/PostBottomTab';
 import Notification from './tabScreen/Notification';
 import Profile from './tabScreen/Profile';
 import {theme} from '../../Utils/theme';
@@ -20,7 +21,7 @@ export default function TabScreen({navigation}) {
       ) : currentPage == 1 ? (
         <Explore navigation={navigation} />
       ) : currentPage == 2 ? (
-        <Post navigation={navigation} />
+        <PostBottomTab navigation={navigation} />
       ) : currentPage == 3 ? (
         <Notification navigation={navigation} />
       ) : (

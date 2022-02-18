@@ -4,6 +4,7 @@ import {
   ScrollView,
   Dimensions,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import Statusbar from '../../Components/Statusbar';
@@ -15,6 +16,7 @@ import TextFormatted from '../../Components/TextFormated';
 import Button from '../../Components/Button';
 import {useNavigation} from '@react-navigation/native';
 import RNPickerSelect from 'react-native-picker-select';
+import {Checkbox} from 'react-native-paper';
 
 export default function Signup() {
   const [focus, setFocus] = useState('');
@@ -22,6 +24,8 @@ export default function Signup() {
   const [focus2, setFocus2] = useState('');
   const [account_type, setaccount_type] = useState('Select Favourite Sports');
   const navigation = useNavigation();
+  const [terms_and_condition, setTerms_and_condition] = useState(0);
+
   // console.log(focus);
   return (
     <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
@@ -170,6 +174,41 @@ export default function Signup() {
           </View>
         </View>
 
+        <View
+          style={{
+            flexDirection: 'row',
+            marginTop: 20,
+            alignItems: Platform.OS === 'ios' ? 'center' : 'flex-start',
+          }}>
+          <Checkbox
+            tintColors={{
+              true: theme.colors.secondary,
+              false: theme.colors.placeholder,
+            }}
+            boxType={'square'}
+            onCheckColor={theme.colors.secondary}
+            onFillColor={theme.colors.secondary}
+            onTintColor={theme.colors.secondary}
+            onAnimationType="stroke"
+            offAnimationType="stroke"
+            disabled={false}
+            value={terms_and_condition}
+            onValueChange={newValue => setTerms_and_condition(newValue)}
+          />
+          <TextFormatted
+            style={{
+              marginLeft: 10,
+              color: theme.colors.Black,
+              flexShrink: 1,
+            }}>
+            I have read and accepted all the{'  '}
+            <TextFormatted
+              onPress={() => navigation.navigate('Terms_Conditions')}
+              style={{color: theme.colors.secondary, fontWeight: '600'}}>
+              terms and conditions
+            </TextFormatted>
+          </TextFormatted>
+        </View>
         <View style={{marginHorizontal: 20, marginVertical: 40}}>
           <Button
             onPress={() => navigation.navigate('otpVerify')}

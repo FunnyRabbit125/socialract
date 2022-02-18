@@ -99,7 +99,12 @@ export default function Settings() {
         </View>
 
         <View style={{marginHorizontal: 20}}>
-          <TextFormatted style={{fontWeight: '700', marginTop: 30}}>
+          <TextFormatted
+            style={{
+              fontWeight: '700',
+              color: theme.colors.Black,
+              marginTop: 30,
+            }}>
             Privacy Options
           </TextFormatted>
 
@@ -130,7 +135,12 @@ export default function Settings() {
         </View>
 
         <View style={{marginHorizontal: 20}}>
-          <TextFormatted style={{fontWeight: '700', marginTop: 30}}>
+          <TextFormatted
+            style={{
+              fontWeight: '700',
+              color: theme.colors.Black,
+              marginTop: 30,
+            }}>
             Security Options
           </TextFormatted>
 
@@ -151,7 +161,12 @@ export default function Settings() {
         </View>
 
         <View style={{marginHorizontal: 20, marginBottom: 40}}>
-          <TextFormatted style={{fontWeight: '700', marginTop: 30}}>
+          <TextFormatted
+            style={{
+              fontWeight: '700',
+              color: theme.colors.Black,
+              marginTop: 30,
+            }}>
             Theme
           </TextFormatted>
 
