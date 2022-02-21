@@ -177,8 +177,9 @@ export default function Signup() {
         <View
           style={{
             flexDirection: 'row',
-            marginTop: 20,
-            alignItems: Platform.OS === 'ios' ? 'center' : 'flex-start',
+            marginTop: 5,
+            marginHorizontal: 20,
+            alignItems: 'center',
           }}>
           <Checkbox
             tintColors={{
@@ -197,14 +198,21 @@ export default function Signup() {
           />
           <TextFormatted
             style={{
-              marginLeft: 10,
+              marginLeft: 6,
               color: theme.colors.Black,
               flexShrink: 1,
+              fontSize: 10,
+              // marginRight: 20,
+              marginTop: 4,
             }}>
             I have read and accepted all the{'  '}
             <TextFormatted
               onPress={() => navigation.navigate('Terms_Conditions')}
-              style={{color: theme.colors.secondary, fontWeight: '600'}}>
+              style={{
+                color: theme.colors.secondary,
+                fontWeight: '600',
+                fontSize: 10,
+              }}>
               terms and conditions
             </TextFormatted>
           </TextFormatted>

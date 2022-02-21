@@ -39,7 +39,7 @@ export default function Settings() {
         </View>
 
         <View style={{marginHorizontal: 20, marginTop: 20}}>
-          <TextFormatted style={{fontWeight: '700'}}>
+          <TextFormatted style={{fontWeight: '700', color: theme.colors.Black}}>
             Account Type
           </TextFormatted>
           <TouchableOpacity

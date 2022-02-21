@@ -170,7 +170,8 @@ export default function Profile() {
           style={{
             alignItems: 'flex-start',
             justifyContent: 'space-between',
-            height: Dimensions.get('window').height / 5.5,
+            height: Dimensions.get('window').height / 4.5,
+            // borderWidth: 1,
           }}>
           <View style={{alignItems: 'flex-start'}}>
             <TextFormatted
@@ -186,7 +187,7 @@ export default function Profile() {
               style={{
                 color: theme.colors.Black,
                 fontSize: 13,
-                fontWeight: '500',
+                fontWeight: '400',
               }}>
               Posts
             </TextFormatted>
@@ -205,7 +206,7 @@ export default function Profile() {
               style={{
                 color: theme.colors.Black,
                 fontSize: 13,
-                fontWeight: '500',
+                fontWeight: '400',
               }}>
               Followers
             </TextFormatted>
@@ -224,7 +225,7 @@ export default function Profile() {
               style={{
                 color: theme.colors.Black,
                 fontSize: 13,
-                fontWeight: '500',
+                fontWeight: '400',
               }}>
               Following
             </TextFormatted>
@@ -245,7 +246,27 @@ export default function Profile() {
             marginTop: 10,
             color: theme.colors.Black,
           }}>
-          Digital goodies designer @pixsellz Everything is designed.
+          Digital goodies designer
+          <TextFormatted
+            style={{
+              fontSize: 12,
+              fontWeight: '600',
+              width: Dimensions.get('window').width / 1.5,
+              marginTop: 10,
+              color: theme.colors.secondary,
+            }}>
+            @pixsellz{' '}
+          </TextFormatted>
+          <TextFormatted
+            style={{
+              fontSize: 12,
+              fontWeight: '400',
+              width: Dimensions.get('window').width / 1.5,
+              marginTop: 10,
+              color: theme.colors.Black,
+            }}>
+            Everything is designed.
+          </TextFormatted>
         </TextFormatted>
       </View>
 

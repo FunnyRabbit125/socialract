@@ -56,8 +56,8 @@ export default function TabScreen({navigation}) {
           }}>
           <Image
             style={{
-              height: 35,
-              width: 27,
+              height: 24,
+              width: 24,
               resizeMode: 'contain',
             }}
             source={
@@ -78,8 +78,8 @@ export default function TabScreen({navigation}) {
           }}>
           <Image
             style={{
-              height: 35,
-              width: 31,
+              height: 24,
+              width: 24,
               marginTop: 5,
               resizeMode: 'contain',
             }}
@@ -101,8 +101,8 @@ export default function TabScreen({navigation}) {
           }}>
           <Image
             style={{
-              height: 35,
-              width: 30,
+              height: 24,
+              width: 24,
               marginTop: 5,
               resizeMode: 'contain',
             }}
@@ -123,8 +123,8 @@ export default function TabScreen({navigation}) {
           }}>
           <Image
             style={{
-              height: 30,
-              width: 27,
+              height: 24,
+              width: 24,
               marginTop: 5,
               resizeMode: 'contain',
             }}
