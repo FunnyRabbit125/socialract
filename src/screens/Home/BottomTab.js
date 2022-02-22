@@ -146,8 +146,8 @@ export default function TabScreen({navigation}) {
           }}>
           <Image
             style={{
-              height: 38,
-              width: 38,
+              height: 30,
+              width: 30,
               marginTop: 5,
               resizeMode: 'cover',
               borderRadius: 50,

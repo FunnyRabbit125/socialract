@@ -7,6 +7,8 @@ import {theme} from '../../Utils/theme';
 import {useNavigation} from '@react-navigation/native';
 import TextFormatted from '../../Components/TextFormated';
 import SettingOptions from '../../Components/SettingOptions';
+import store from '../../redux/Store';
+import {SIGNOUT} from '../../redux/Actions/ActonTypes';
 
 export default function Settings() {
   const navigation = useNavigation();
@@ -215,6 +217,11 @@ export default function Settings() {
             text={'Get Verified'}
           />
           <SettingOptions
+            onPress={() => {
+              store.dispatch({
+                type: SIGNOUT,
+              });
+            }}
             color={theme.colors.red}
             fontWeight={'800'}
             text={'Logout'}

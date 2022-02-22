@@ -235,7 +235,7 @@ export default function Profile() {
                   : theme.colors.OtherText,
               fontWeight: '700',
             }}>
-            Photos
+            All
           </TextFormatted>
         </TouchableOpacity>
 
@@ -258,9 +258,10 @@ export default function Profile() {
                   : theme.colors.OtherText,
               fontWeight: '700',
             }}>
-            Videos
+            Photos
           </TextFormatted>
         </TouchableOpacity>
+
         <TouchableOpacity
           onPress={() => setCurrentPage(2)}
           style={[
@@ -280,14 +281,38 @@ export default function Profile() {
                   : theme.colors.OtherText,
               fontWeight: '700',
             }}>
+            Videos
+          </TextFormatted>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setCurrentPage(3)}
+          style={[
+            styles.tabStyle,
+            {
+              backgroundColor:
+                currentPage == 3
+                  ? theme.colors.secondary
+                  : theme.colors.primary,
+            },
+          ]}>
+          <TextFormatted
+            style={{
+              color:
+                currentPage == 3
+                  ? theme.colors.primary
+                  : theme.colors.OtherText,
+              fontWeight: '700',
+            }}>
             Text
           </TextFormatted>
         </TouchableOpacity>
       </View>
 
       {currentPage == 0 ? (
-        <Photos navigation={navigation} />
+        <Text_ navigation={navigation} />
       ) : currentPage == 1 ? (
+        <Photos navigation={navigation} />
+      ) : currentPage == 2 ? (
         <Videos navigation={navigation} />
       ) : (
         <Text_ navigation={navigation} />
@@ -356,7 +381,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').width / 6,
   },
   tabStyle: {
-    width: '33%',
+    width: '25%',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 15,
@@ -364,11 +389,11 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 1,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
 
-    elevation: 5,
+    elevation: 2,
   },
 });

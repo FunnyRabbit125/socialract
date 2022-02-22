@@ -14,14 +14,82 @@ import {Image} from 'react-native';
 import TextFormatted from '../../Components/TextFormated';
 import Button from '../../Components/Button';
 import {useNavigation} from '@react-navigation/native';
+import {ShowToast} from '../../Utils/ToastFunction';
+import {baseUrl} from '../../Utils/constance';
+import Loading from '../../Components/Loading';
+import store, {persistor} from '../../redux/Store';
+import {LOGIN, USERNAME} from '../../redux/Actions/ActonTypes';
 
 export default function Login() {
+  const navigation = useNavigation();
+
   const [focus, setFocus] = useState('');
   const [focus1, setFocus1] = useState('');
-  const navigation = useNavigation();
+
+  const [user_name, setUser_name] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [loading, setLoading] = useState(false);
   // console.log(focus);
+
+  async function Login() {
+    if (!user_name) {
+      ShowToast('Please enter your user name.', 'error');
+      return;
+    }
+    if (!password) {
+      ShowToast('Please enter your password.', 'error');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const url = baseUrl + 'login';
+
+      // const token = await firebase.messaging().getToken();
+      // alert(token);
+      const body = new FormData();
+      body.append('user_name', user_name);
+      body.append('password', password);
+      body.append('register_id', 'token');
+
+      const res = await fetch(url, {
+        method: 'POST',
+        body: body,
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      });
+      console.log(res);
+      const rslt = await res.json();
+      console.log(rslt);
+
+      if (rslt.status == '1') {
+        store.dispatch({
+          type: LOGIN,
+          payload: rslt.result,
+        });
+
+        ShowToast('Login successfully.');
+
+        // navigation.replace('HomeNavigator', (screen = 'Bottomtab'));
+      } else {
+        ShowToast(rslt.message || 'Unknown error', 'error');
+      }
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      // alert('An error occured.');
+      ShowToast('An error occured.', 'error');
+
+      console.log(e);
+    }
+  }
+
   return (
     <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
+      <Loading size={60} visible={loading} color={theme.colors.secondary} />
+
       <Statusbar
         backgroundColor={theme.colors.primary}
         barStyle="dark-content"
@@ -49,6 +117,8 @@ export default function Login() {
             onFocus={() => setFocus('Focus')}
             onBlur={() => setFocus('lost')}
             find={focus}
+            onChangeText={setUser_name}
+            value={user_name}
           />
           <View style={{height: 20}} />
           <TextInput
@@ -57,6 +127,9 @@ export default function Login() {
             onFocus={() => setFocus1('Focus')}
             onBlur={() => setFocus1('lost')}
             find={focus1}
+            onChangeText={setPassword}
+            value={password}
+            secureTextEntry
           />
         </View>
         <TouchableOpacity
@@ -73,7 +146,8 @@ export default function Login() {
         </TouchableOpacity>
         <View style={{marginHorizontal: 20, marginVertical: 20}}>
           <Button
-            onPress={() => navigation.navigate('HomeNavigator')}
+            onPress={() => Login()}
+            // onPress={() => navigation.navigate('HomeNavigator')}
             buttontext={'Log in'}
           />
         </View>

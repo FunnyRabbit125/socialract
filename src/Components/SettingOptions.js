@@ -12,6 +12,7 @@ export default function SettingOptions({
   fontWeight,
   color,
   fontSize,
+  onPress,
 }) {
   return (
     <View>
@@ -23,6 +24,7 @@ export default function SettingOptions({
           justifyContent: 'space-between',
         }}>
         <TextFormatted
+          onPress={onPress}
           style={{
             color: color || theme.colors.OtherText,
             fontWeight: fontWeight || '500',

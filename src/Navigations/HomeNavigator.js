@@ -23,7 +23,8 @@ function App() {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="Bottomtab">
+      // initialRouteName="Bottomtab"
+    >
       <Stack.Screen name="Bottomtab" component={BottomTab} />
       <Stack.Screen name="OtherUserProfile" component={OtherUserProfile} />
       <Stack.Screen name="ChatList" component={ChatList} />

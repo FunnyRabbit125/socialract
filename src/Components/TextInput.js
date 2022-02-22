@@ -30,6 +30,7 @@ export default function CustomTextInput({
   height,
   onBlur,
   onFocus,
+  width,
 }) {
   return (
     <View>
@@ -40,7 +41,7 @@ export default function CustomTextInput({
           borderRadius: 7,
           marginTop: 10,
           opacity: opacitytwo,
-          width: Dimensions.get('window').width - 40,
+          width: width || Dimensions.get('window').width - 40,
           paddingVertical: find == 'Focus' ? 6 : 10,
           // paddingVertical: 6,
           height: height,

@@ -17,6 +17,7 @@ import Photos from './ProfileTab/Photos';
 import Videos from './ProfileTab/Videos';
 import Text_ from './ProfileTab/Text';
 import {useNavigation, useRoute} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 const EVENTS_FOLLOWED = [
   {
@@ -49,6 +50,10 @@ export default function Profile() {
   const [currentPage, setCurrentPage] = useState('');
   const navigation = useNavigation();
   const {params} = useRoute();
+
+  const auth = useSelector(state => state.auth);
+  // alert(JSON.stringify(auth));
+
   return (
     <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
       <Statusbar
@@ -87,7 +92,7 @@ export default function Profile() {
               // flexShrink: 1,
               marginHorizontal: 5,
             }}>
-            Jacob West
+            {auth.user_name}
           </TextFormatted>
           <Image
             style={{
@@ -149,13 +154,15 @@ export default function Profile() {
               width: Dimensions.get('window').width / 1.6,
               height: Dimensions.get('window').height / 4,
               borderRadius: 20,
+              backgroundColor: theme.colors.C4C4C4,
             }}
             imageStyle={{
+              backgroundColor: theme.colors.C4C4C4,
               width: Dimensions.get('window').width / 1.6,
               height: Dimensions.get('window').height / 4,
               borderRadius: 20,
             }}
-            source={{uri: 'https://picsum.photos/500'}}>
+            source={{uri: auth.image}}>
             <View style={{position: 'absolute', top: -15, right: -15}}>
               <TouchableOpacity>
                 <Image
@@ -445,5 +452,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
 });

@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+// import com.github.reactnativecommunity.location.RNLocationPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativecommunity.cameraroll.CameraRollPackage;
 import com.reactnativecommunity.cameraroll.CameraRollPackage;
@@ -48,6 +49,7 @@ public class MainApplication extends Application implements ReactApplication {
   // protected List<ReactPackage> getPackages() {
   // return Arrays.asList(
   // new MainReactPackage(),
+  // new RNLocationPackage(),
   // new VectorIconsPackage(),
   // new CameraRollPackage(),
   // new CameraRollPackage(),

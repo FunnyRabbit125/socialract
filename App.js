@@ -1,9 +1,70 @@
-import {View, Text} from 'react-native';
 import React from 'react';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 import Appnavigator from './src/Navigations/Appnavigator';
+import store, {persistor} from './src/redux/Store';
+import Toast from 'react-native-toast-message';
+import {Dimensions, View} from 'react-native';
+import TextFormatted from './src/Components/TextFormated';
+import {theme} from './src/Utils/theme';
 
 export default function App() {
-  return <Appnavigator />;
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
+        <Appnavigator />
+        <Toast
+          visibilityTime={1500}
+          autoHide={true}
+          config={{
+            success: props => (
+              <View
+                style={{
+                  width: Dimensions.get('window').width - 48,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingVertical: 16,
+                  paddingHorizontal: 20,
+                  borderRadius: 6,
+                  backgroundColor: theme.colors.secondary,
+                }}>
+                {/* style={[styles.toastContainer, {backgroundColor: '#22CD7E'}]}> */}
+                <TextFormatted
+                  style={{
+                    color: 'white',
+                    fontWeight: '500',
+                    textAlign: 'left',
+                  }}>
+                  {props.text1}
+                </TextFormatted>
+              </View>
+            ),
+            error: props => (
+              <View
+                style={{
+                  backgroundColor: '#F36566',
+                  width: Dimensions.get('window').width - 48,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingVertical: 16,
+                  paddingHorizontal: 20,
+                  borderRadius: 6,
+                }}>
+                <TextFormatted
+                  style={{
+                    color: 'white',
+                    textAlign: 'left',
+                    fontWeight: '500',
+                  }}>
+                  {props.text1}
+                </TextFormatted>
+              </View>
+            ),
+          }}
+        />
+      </PersistGate>
+    </Provider>
+  );
 }
 
 // import {View, Text} from 'react-native';

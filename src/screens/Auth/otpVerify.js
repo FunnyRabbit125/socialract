@@ -184,7 +184,7 @@ export default class OTPVerification extends Component {
                 onChangeText={pin6 => {
                   this.setState({pin6: pin6}, () => {
                     if (pin6 != '') {
-                      this.props.navigation.navigate('HomeNavigator');
+                      // this.props.navigation.navigate('HomeNavigator');
                     }
                   });
                 }}
@@ -201,7 +201,7 @@ export default class OTPVerification extends Component {
           </View>
           <View style={{marginHorizontal: 20, marginVertical: 40}}>
             <Button
-              onPress={() => this.props.navigation.navigate('HomeNavigator')}
+              // onPress={() => this.props.navigation.navigate('HomeNavigator')}
               buttontext={'Verify'}
             />
           </View>

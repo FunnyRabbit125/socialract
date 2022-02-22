@@ -8,12 +8,23 @@ import {
   StyleSheet,
   ImageBackground,
   ScrollView,
+  KeyboardAvoidingView,
+  Modal,
+  TextInput,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {theme} from '../../../Utils/theme';
 import Statusbar from '../../../Components/Statusbar';
 import TextFormatted from '../../../Components/TextFormated';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import Button from '../../../Components/Button';
+import CustomTextInput from '../../../Components/TextInput';
+import {baseUrl} from '../../../Utils/constance';
+import {useSelector} from 'react-redux';
+import {ShowToast} from '../../../Utils/ToastFunction';
+import {ActivityIndicator} from 'react-native-paper';
+import {UPDATEPROFILE} from '../../../redux/Actions/ActonTypes';
+import store from '../../../redux/Store';
 
 const EVENTS_FOLLOWED = [
   {
@@ -44,8 +55,145 @@ const EVENTS_FOLLOWED = [
 
 export default function Home() {
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
+  const [focus, setFocus] = useState('');
+  const [user_name, setUser_name] = useState('');
+  // const {params} = useRoute();
+
+  const [showmodal, setShowmodal] = useState(false);
+
+  const auth = useSelector(state => state.auth);
+
+  // alert(JSON.stringify(auth));
+
+  const showModal = () => setShowmodal(true);
+  const hideModal = () => setShowmodal(false);
+
+  async function Create_user_name() {
+    if (!user_name) {
+      ShowToast('Please enter user name.', 'error');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const url = baseUrl + 'create_user_name';
+
+      const body = new FormData();
+      body.append('user_id', auth.id);
+      body.append('user_name', user_name);
+
+      const res = await fetch(url, {
+        method: 'POST',
+        body: body,
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      });
+      console.log(res);
+      const rslt = await res.json();
+      console.log(rslt);
+
+      if (rslt.status == '1') {
+        store.dispatch({
+          type: UPDATEPROFILE,
+          payload: {...rslt.result, Modal: false},
+        });
+        hideModal();
+        ShowToast('User name created successfully');
+      } else {
+        ShowToast(rslt.message || 'Unknown error', 'error');
+      }
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      // alert('An error occured.');
+      ShowToast('An error occured.', 'error');
+
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    auth.Modal == true && showModal();
+  }, []);
+
   return (
     <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
+      <Modal visible={showmodal} onDismiss={hideModal} transparent style={{}}>
+        <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
+          <TouchableOpacity
+            onPress={hideModal}
+            activeOpacity={1}
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: theme.colors.Black + '66',
+            }}>
+            <TouchableOpacity
+              onPress={() => {}}
+              activeOpacity={1}
+              style={{
+                backgroundColor: theme.colors.primary,
+                padding: 30,
+                paddingBottom: 0,
+                width: Dimensions.get('window').width - 80,
+                alignItems: 'center',
+                borderRadius: 20,
+              }}>
+              <TextFormatted
+                style={{
+                  textAlign: 'center',
+                  color: theme.colors.Black,
+                  fontWeight: '700',
+                }}>
+                Create your username
+              </TextFormatted>
+              <View style={{marginTop: 20}}>
+                <CustomTextInput
+                  placeholder={'User name'}
+                  Focus_Heading={'User name'}
+                  onFocus={() => setFocus('Focus')}
+                  onBlur={() => setFocus('lost')}
+                  find={focus}
+                  value={user_name}
+                  onChangeText={setUser_name}
+                  width={Dimensions.get('window').width - 120}
+                />
+                {user_name == '' ? (
+                  <View />
+                ) : (
+                  <TextFormatted
+                    style={{
+                      textAlign: 'center',
+                      color: theme.colors.Like,
+                      fontWeight: '600',
+                      marginTop: 20,
+                    }}>
+                    Username available
+                  </TextFormatted>
+                )}
+              </View>
+              {loading ? (
+                <View style={{marginBottom: 30}}>
+                  <ActivityIndicator color={theme.colors.secondary} />
+                </View>
+              ) : (
+                <View style={{marginVertical: 30}}>
+                  <Button
+                    onPress={() => Create_user_name()}
+                    buttontext={'Submit'}
+                    width={Dimensions.get('window').width / 2}
+                    // onPress={() => navigation.navigate('OTPVerify')}
+                  />
+                </View>
+              )}
+            </TouchableOpacity>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
+      </Modal>
+
       <Statusbar
         backgroundColor={theme.colors.primary}
         barStyle="dark-content"
@@ -87,7 +235,8 @@ export default function Home() {
           </TouchableOpacity>
           <TouchableOpacity
             //
-            onPress={() => navigation.navigate('Wallet')}>
+            onPress={() => showModal()}>
+            {/* onPress={() => navigation.navigate('Wallet')}> */}
             <Image
               style={{height: 25, width: 25, resizeMode: 'contain'}}
               source={require('../../../assets/Wallet_gray.png')}
@@ -254,6 +403,9 @@ export default function Home() {
                       width: Dimensions.get('window').width / 1.4,
                       height: Dimensions.get('window').height / 5,
                       borderRadius: 20,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      alignSelf: 'center',
                     }}
                     imageStyle={{
                       width: Dimensions.get('window').width / 1.4,
