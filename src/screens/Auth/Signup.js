@@ -19,8 +19,8 @@ import RNPickerSelect from 'react-native-picker-select';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {SIGNUP, USERNAME} from '../../redux/Actions/ActonTypes';
 import store from '../../redux/Store';
-// import Geolocation from '@react-native-community/geolocation';
-// import RNLocation from 'react-native-location';
+import Geolocation from '@react-native-community/geolocation';
+import RNLocation from 'react-native-location';
 import {baseUrl, LocationLink, mapsApiKey} from '../../Utils/constance';
 import {ShowToast} from '../../Utils/ToastFunction';
 import {CheckBox, Icon} from 'react-native-elements';
@@ -94,8 +94,8 @@ export default function Signup() {
       body.append('email', email);
       body.append('password', password);
       body.append('register_id', 'token');
-      body.append('lat', 'latitude');
-      body.append('lon', 'longitude');
+      body.append('lat', latitude);
+      body.append('lon', longitude);
       body.append('type', account_type);
       body.append('image', {
         uri: uri.uri,
@@ -142,42 +142,42 @@ export default function Signup() {
     // setLoading(false);
   }, []);
 
-  // const currentLocation = async () => {
-  //   await RNLocation.requestPermission({
-  //     ios: 'whenInUse',
-  //     android: {
-  //       detail: 'coarse',
-  //     },
-  //   });
-  //   Geolocation.getCurrentPosition(async info => {
-  //     setLongitude(info.coords.longitude);
-  //     setLatitude(info.coords.latitude);
+  const currentLocation = async () => {
+    await RNLocation.requestPermission({
+      ios: 'whenInUse',
+      android: {
+        detail: 'coarse',
+      },
+    });
+    Geolocation.getCurrentPosition(async info => {
+      setLongitude(info.coords.longitude);
+      setLatitude(info.coords.latitude);
 
-  //     // ShowToast(JSON.stringify(info.coords));
-  //     const url =
-  //       LocationLink +
-  //       info.coords.latitude +
-  //       ',' +
-  //       info.coords.longitude +
-  //       mapsApiKey;
-  //     try {
-  //       // setLoading(true);
-  //       const res = await fetch(url);
-  //       // console.log(res);
+      // ShowToast(JSON.stringify(info.coords));
+      const url =
+        LocationLink +
+        info.coords.latitude +
+        ',' +
+        info.coords.longitude +
+        mapsApiKey;
+      try {
+        // setLoading(true);
+        const res = await fetch(url);
+        // console.log(res);
 
-  //       const json = await res.json();
-  //       // console.log(json);
-  //       setLocation(json.results[0]?.formatted_address);
-  //     } catch (e) {
-  //       // setLoading(false);
-  //       ShowToast(e.toString());
-  //     }
-  //   }, console.warn);
-  // };
+        const json = await res.json();
+        // console.log(json);
+        setLocation(json.results[0]?.formatted_address);
+      } catch (e) {
+        // setLoading(false);
+        ShowToast(e.toString());
+      }
+    }, console.warn);
+  };
 
-  // useEffect(() => {
-  //   currentLocation();
-  // }, []);
+  useEffect(() => {
+    currentLocation();
+  }, []);
 
   // console.log(focus);
   return (

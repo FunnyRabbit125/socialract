@@ -7,7 +7,7 @@ import VideoUpload from './tabScreen/PostTab/VideoUpload';
 import TextFormatted from '../../Components/TextFormated';
 import {theme} from '../../Utils/theme';
 
-export default function TabScreen({navigation}) {
+export default function TabScreen({navigation, navigate}) {
   const [currentPage, setCurrentPage] = useState(0);
   // const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
@@ -18,7 +18,7 @@ export default function TabScreen({navigation}) {
       {currentPage == 0 ? (
         <Textupload navigation={navigation} />
       ) : currentPage == 1 ? (
-        <PhotoUpload navigation={navigation} />
+        <PhotoUpload navigation={navigation} navigate={navigate} />
       ) : (
         <VideoUpload navigation={navigation} />
       )}

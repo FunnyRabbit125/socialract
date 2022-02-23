@@ -19,6 +19,7 @@ import TextFormatted from '../../../Components/TextFormated';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Button from '../../../Components/Button';
 import CustomTextInput from '../../../Components/TextInput';
+import Loading from '../../../Components/Loading';
 import {baseUrl} from '../../../Utils/constance';
 import {useSelector} from 'react-redux';
 import {ShowToast} from '../../../Utils/ToastFunction';
@@ -59,12 +60,13 @@ export default function Home() {
   const [focus, setFocus] = useState('');
   const [user_name, setUser_name] = useState('');
   // const {params} = useRoute();
+  const auth = useSelector(state => state.auth);
+
+  const [data, setData] = useState([]);
 
   const [showmodal, setShowmodal] = useState(false);
 
-  const auth = useSelector(state => state.auth);
-
-  // alert(JSON.stringify(auth));
+  // alert(JSON.stringify(data));
 
   const showModal = () => setShowmodal(true);
   const hideModal = () => setShowmodal(false);
@@ -113,13 +115,48 @@ export default function Home() {
       console.log(e);
     }
   }
+  async function Get_Post() {
+    try {
+      setLoading(true);
+      const url = baseUrl + 'get_all_post';
+
+      const body = new FormData();
+      body.append('user_id', auth.id);
+
+      const res = await fetch(url, {
+        method: 'POST',
+        body: body,
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      });
+      console.log(res);
+      const rslt = await res.json();
+      console.log(rslt);
+
+      if (rslt.status == '1') {
+        setData(rslt.result);
+      } else {
+        ShowToast(rslt.message || 'Unknown error', 'error');
+      }
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      // alert('An error occured.');
+      ShowToast('An error occured.', 'error');
+
+      console.log(e);
+    }
+  }
 
   useEffect(() => {
-    auth.Modal == true && showModal();
+    auth.user_name == '' && showModal();
+    Get_Post();
   }, []);
 
   return (
     <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
+      <Loading size={60} visible={loading} color={theme.colors.secondary} />
       <Modal visible={showmodal} onDismiss={hideModal} transparent style={{}}>
         <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
           <TouchableOpacity
@@ -378,7 +415,7 @@ export default function Home() {
         {/* POST LIST */}
         <View style={{flex: 1}}>
           <FlatList
-            data={EVENTS_FOLLOWED}
+            data={data}
             showsVerticalScrollIndicator={false}
             scrollEnabled={false}
             contentContainerStyle={{}}
@@ -411,8 +448,11 @@ export default function Home() {
                       width: Dimensions.get('window').width / 1.4,
                       height: Dimensions.get('window').height / 5,
                       borderRadius: 10,
+                      backgroundColor: theme.colors.C4C4C4,
+                      resizeMode: 'cover',
                     }}
-                    source={{uri: 'https://picsum.photos/500'}}>
+                    source={{uri: item.user_post[0].post_data}}>
+                    {/* source={{uri: 'https://picsum.photos/500'}}> */}
                     <View style={{position: 'absolute', top: -8, left: -13}}>
                       <Image
                         source={require('../../../assets/More_.png')}
@@ -422,6 +462,7 @@ export default function Home() {
                   </ImageBackground>
                   <View style={{width: 270}}>
                     <TextFormatted
+                      numberOfLines={2}
                       style={{
                         fontSize: 10,
                         marginVertical: 10,
@@ -435,11 +476,10 @@ export default function Home() {
                           color: theme.colors.Black,
                           fontWeight: '600',
                         }}>
-                        joshua_l{' '}
+                        {item.user_name}{' '}
                       </TextFormatted>
-                      The game in Japan was amazing and I want to share some
-                      photos...
-                      <TextFormatted
+                      {item.description}
+                      {/* <TextFormatted
                         style={{
                           fontSize: 10,
                           marginVertical: 10,
@@ -448,7 +488,7 @@ export default function Home() {
                           textDecorationLine: 'underline',
                         }}>
                         See More
-                      </TextFormatted>
+                      </TextFormatted> */}
                     </TextFormatted>
                   </View>
                 </View>
@@ -471,8 +511,12 @@ export default function Home() {
                         width: 45,
                         resizeMode: 'cover',
                         borderRadius: 50,
+                        backgroundColor: theme.colors.C4C4C4,
                       }}
-                      source={{uri: 'https://picsum.photos/500'}}>
+                      source={{
+                        uri: item.user_image,
+                      }}>
+                      {/* source={{uri: 'https://picsum.photos/500'}}> */}
                       <View style={{position: 'absolute', right: 0, top: -5}}>
                         <Image
                           style={{height: 15, width: 15, resizeMode: 'contain'}}
@@ -498,7 +542,7 @@ export default function Home() {
                         fontSize: 12,
                         fontWeight: '600',
                       }}>
-                      23
+                      {item.like_count}
                     </TextFormatted>
                   </View>
 
@@ -518,7 +562,7 @@ export default function Home() {
                         fontSize: 12,
                         fontWeight: '600',
                       }}>
-                      23
+                      {item.comment_count || '0'}
                     </TextFormatted>
                   </View>
 

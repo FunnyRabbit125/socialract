@@ -14,6 +14,7 @@ import Cards from '../screens/Home/Cards';
 import AddNewCard from '../screens/Home/AddNewCard';
 import AddStory from '../screens/Home/AddStory';
 import Upload_Audio from '../screens/Home/Upload_Audio';
+import Home from '../screens/Home/tabScreen/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,7 @@ function App() {
       <Stack.Screen name="AddNewCard" component={AddNewCard} />
       <Stack.Screen name="AddStory" component={AddStory} />
       <Stack.Screen name="Upload_Audio" component={Upload_Audio} />
+      <Stack.Screen name="Home" component={Home} />
     </Stack.Navigator>
   );
 }

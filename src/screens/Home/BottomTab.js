@@ -21,7 +21,7 @@ export default function TabScreen({navigation}) {
       ) : currentPage == 1 ? (
         <Explore navigation={navigation} />
       ) : currentPage == 2 ? (
-        <PostBottomTab navigation={navigation} />
+        <PostBottomTab navigation={navigation} navigate={setCurrentPage} />
       ) : currentPage == 3 ? (
         <Notification navigation={navigation} />
       ) : (
