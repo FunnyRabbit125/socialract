@@ -16,11 +16,11 @@ export default function TabScreen({navigation, navigate}) {
       <StatusBar backgroundColor="#fff" barStyle="light-content" />
 
       {currentPage == 0 ? (
-        <Textupload navigation={navigation} />
+        <Textupload navigation={navigation} navigate={navigate} />
       ) : currentPage == 1 ? (
         <PhotoUpload navigation={navigation} navigate={navigate} />
       ) : (
-        <VideoUpload navigation={navigation} />
+        <VideoUpload navigation={navigation} navigate={navigate} />
       )}
       <View
         style={{
